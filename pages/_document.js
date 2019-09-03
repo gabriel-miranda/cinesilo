@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from 'theme/global';
@@ -45,7 +45,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="es">
         <Head>
           <meta charSet="utf-8" />
           <link rel="shortcut icon" href="favicon.ico" />
@@ -59,7 +59,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
