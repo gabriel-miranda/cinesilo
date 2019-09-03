@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     color: #000;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Visby Round CF', sans-serif;
+    font-family: 'cinesilo', sans-serif;
   }
 `;
 
