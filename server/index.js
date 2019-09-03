@@ -38,9 +38,25 @@ const contentful = new ContentfulWrapper({
 
   server.disable('x-powered-by');
 
+  server.use(compression());
+
   server.use(favicon(path.join(__dirname, '../static', 'favicon.ico')));
 
-  server.use(compression());
+  server.get('/manifest.json', (req, res, n) => {
+    res.sendFile(
+      'manifest.json',
+      { root: path.join(__dirname, '../static') },
+      err => {
+        if (err) {
+          log.error(
+            '💥 An error ocurred when trying to retrieve the manifest.json',
+            err,
+          );
+          n(err);
+        }
+      },
+    );
+  });
 
   server.use(handleMiddleware(handle));
 
@@ -54,9 +70,9 @@ const contentful = new ContentfulWrapper({
 
   server.listen(PORT, err => {
     if (err) {
-      log.error('Error: ', err);
+      log.error('> 💥 An error ocurred when starting up the server: ', err);
       throw err;
     }
-    log.info(`> Ready on ${BASE_URL}`);
+    log.info(`> 🎉 Ready on ${BASE_URL}`);
   });
 })();
