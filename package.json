@@ -14,7 +14,7 @@
     "lint": "eslint . -c .eslintrc.js --ext js",
     "lint:fix": "eslint . --fix",
     "lint:watch": "esw -w .",
-    "prettier": "prettier --config .prettierrc --write \"{,!(node_modules)/**/}*.js\"",
+    "prettier": "prettier --config .prettierrc --write \"{,!(node_modules|.next)/**/}*.js\"",
     "test": "NODE_ENV=test jest"
   },
   "husky": {
