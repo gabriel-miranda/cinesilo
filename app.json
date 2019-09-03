@@ -1,0 +1,33 @@
+{
+  "name": "cinesilo",
+  "description": "next.js + express + graphql + contentful app",
+  "website": "https://cinesilo.com",
+  "repository": "git@github.com:gabriel-miranda/cinesilo.git",
+  "scripts": {},
+  "env": {
+    "APP_NAME": {
+      "required": true
+    },
+    "BASE_URL": {
+      "required": true
+    },
+    "SPACE": {
+      "required": true
+    },
+    "ACCESS_TOKEN": {
+      "required": true
+    },
+    "DEBUG": {
+      "required": false
+    },
+    "DEBUG_LEVEL": {
+      "required": false
+    },
+    "PORT": {
+      "required": false
+    },
+    "CACHE_MAX_AGE": {
+      "required": false
+    }
+  }
+}

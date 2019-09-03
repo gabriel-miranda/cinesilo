@@ -1,7 +1,7 @@
 {
   "name": "cinesilo",
   "version": "0.1.0",
-  "description": "Next.js + Contentful based CMS",
+  "description": "next.js + express + graphql + contentful app",
   "main": "src/index.js",
   "repository": "git@github.com:gabriel-miranda/cinesilo.git",
   "author": "gabriel-miranda <gabmirdev@gmail.com>",
