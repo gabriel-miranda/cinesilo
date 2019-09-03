@@ -17,6 +17,11 @@
     "prettier": "prettier --config .prettierrc --write \"{,!(node_modules)/**/}*.js\"",
     "test": "NODE_ENV=test jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier"
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "compression": "^1.7.3",
@@ -45,7 +50,6 @@
     "yarn": "^1.15.2"
   },
   "devDependencies": {
-    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "babel-plugin-inline-react-svg": "^1.0.1",
@@ -59,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "husky": "^3.0.5",
     "nodemon": "^1.18.10",
     "prettier": "1.16.4"
   }
