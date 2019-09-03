@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Visby Round CF';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Visby RoundCF Regular'), local('VisbyRoundCF-Regular'),
+    url('/static/VisbyRoundCF-Regular.woff2') format('woff2');
+}
