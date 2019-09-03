@@ -16,6 +16,23 @@ const schema = buildSchema(`
     category: String!
     created: String!
     body: JSON
+    author: Author!
+    tags: [String]!
+    image: Image!
+  }
+
+  type Author {
+    name: String!
+    bio: String!
+    image: Image!
+  }
+
+  type Image {
+    title: String!
+    url: String!
+    width: String!
+    height: String!
+    contentType: String!
   }
 
   type Feed {

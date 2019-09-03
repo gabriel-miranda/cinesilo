@@ -4,6 +4,42 @@ const { ServerError, NotFound } = require('../../modules/error');
 
 const type = 'post';
 
+function formatTags(tags) {
+  return tags.map(tag => tag.fields.name);
+}
+
+function formatImage(image) {
+  const { file, title } = image.fields;
+  const { url, contentType } = file;
+  const size = file.details.image;
+  return {
+    url,
+    title,
+    contentType,
+    ...size,
+  };
+}
+
+function formatAuthor(author) {
+  const image = formatImage(author.fields.image);
+  return {
+    ...author.fields,
+    image,
+  };
+}
+
+function formatPost(post) {
+  const tags = formatTags(post.tags);
+  const author = formatAuthor(post.author);
+  const image = formatImage(post.image);
+  return {
+    ...post,
+    tags,
+    author,
+    image,
+  };
+}
+
 const resolvers = contentful => ({
   JSON: GraphQLJSON,
   post: async ({ slug }) => {
@@ -18,7 +54,7 @@ const resolvers = contentful => ({
       if (!post) {
         throw new NotFound();
       }
-      return post;
+      return formatPost(post);
     } catch (e) {
       log.error(e);
       throw new Error(JSON.stringify(e));
