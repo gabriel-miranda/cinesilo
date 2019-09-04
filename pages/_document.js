@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
+    const { language } = ctx.res.locals;
 
     try {
       ctx.renderPage = () =>
@@ -37,6 +38,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
+        language,
       };
     } finally {
       sheet.seal();
@@ -44,8 +46,9 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const { language } = this.props;
     return (
-      <Html lang="es">
+      <Html lang={language}>
         <Head>
           <meta charSet="utf-8" />
           <link rel="shortcut icon" href="favicon.ico" />

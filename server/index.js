@@ -8,8 +8,8 @@ const { api } = require('./api');
 const { log } = require('../modules/logger');
 const { initInvalidatorSocket } = require('../modules/cache/invalidator');
 const { contentfulMiddleware } = require('./middlewares/contentful');
+const { languageMiddleware } = require('./middlewares/language');
 const { slashesMiddleware } = require('./middlewares/slashes');
-const { handleMiddleware } = require('./middlewares/handle');
 const { passportSetup } = require('./middlewares/passport');
 const { ContentfulWrapper } = require('../modules/contentful');
 const {
@@ -58,7 +58,7 @@ const contentful = new ContentfulWrapper({
     );
   });
 
-  server.use(handleMiddleware(handle));
+  server.use(languageMiddleware);
 
   server.use(slashesMiddleware());
 

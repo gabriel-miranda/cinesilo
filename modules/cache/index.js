@@ -62,8 +62,8 @@ class BaseCache {
 }
 
 class SSRCache extends BaseCache {
-  static key(req) {
-    return `${req.path}-${req.language}`;
+  static key(req, res) {
+    return `${req.path}-${res.locals.language}`;
   }
 }
 
