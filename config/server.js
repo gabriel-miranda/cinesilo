@@ -1,7 +1,7 @@
 const CLIENT = require('./index');
 
 const IO_PORT = parseInt(process.env.IO_PORT, 10) || 2327;
-const IO_BASE_URL = CLIENT.DEV ? 'http://localhost' : CLIENT.CONFIG.BASE_URL;
+const IO_BASE_URL = CLIENT.DEV ? 'http://localhost' : CLIENT.BASE_URL;
 
 const CACHE_MAX_AGE = CLIENT.DEV
   ? 0
