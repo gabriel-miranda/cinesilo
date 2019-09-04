@@ -4,7 +4,7 @@ const { log } = require('../logger');
 const ssrCache = new SSRCache();
 
 const renderAndCache = app => async (req, res) => {
-  const key = SSRCache.key(req);
+  const key = SSRCache.key(req, res);
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {

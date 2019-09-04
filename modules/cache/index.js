@@ -56,7 +56,7 @@ class BaseCache {
     try {
       keys.forEach(this.store.del);
     } catch (e) {
-      log.log(e);
+      log.error(e);
     }
   }
 }
