@@ -51,7 +51,7 @@ export default class MyDocument extends Document {
       <Html lang={language}>
         <Head>
           <meta charSet="utf-8" />
-          <link rel="shortcut icon" href="favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
