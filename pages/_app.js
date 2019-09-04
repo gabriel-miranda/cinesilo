@@ -2,12 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import Client from 'modules/client/main';
 import { ThemeProvider } from 'styled-components';
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
+import theme from 'theme';
 
 class MyApp extends App {
   static async getInitialProps(appContext) {

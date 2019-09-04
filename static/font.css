@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'cinesilo';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Visby RoundCF Regular'), local('VisbyRoundCF-DemiBold'),
-    url('/static/VisbyRoundCF-DemiBold.woff2') format('woff2');
-}

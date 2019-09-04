@@ -59,7 +59,12 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
           />
-          <link rel="stylesheet" type="text/css" href="/static/font.css" />
+          <link
+            rel="preload"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href="/static/visby.woff2"
+          />
         </Head>
         <body>
           <Main />
