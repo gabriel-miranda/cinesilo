@@ -1,6 +1,7 @@
 require('dotenv').config();
 const path = require('path');
 const next = require('next');
+const cors = require('cors');
 const express = require('express');
 const compression = require('compression');
 const favicon = require('serve-favicon');
@@ -36,6 +37,12 @@ const contentful = new ContentfulWrapper({
   const server = express();
 
   initInvalidatorSocket();
+
+  server.use(
+    cors({
+      origin: BASE_URL,
+    }),
+  );
 
   server.disable('x-powered-by');
 
