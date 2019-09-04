@@ -53,7 +53,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang={language}>
         <Head>
-          <meta charSet="utf-8" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"
@@ -63,7 +62,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=no"
+            content="width=device-width, initial-scale=1, maximum-scale=5"
           />
           <link
             rel="preload"
@@ -72,6 +71,7 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
             href="/static/visby.woff2"
           />
+          <link rel="stylesheet" href="/static/font.css" type="text/css" />
         </Head>
         <body>
           <Main />

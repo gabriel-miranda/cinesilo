@@ -5,6 +5,7 @@ import theme from 'theme';
 import { APP_NAME } from 'config';
 import Client from 'modules/client/main';
 import TranslationsContext from 'modules/translations/context';
+import Header from 'components/Header';
 
 class MyApp extends App {
   static async getInitialProps(appContext) {
@@ -39,7 +40,10 @@ class MyApp extends App {
     return (
       <TranslationsContext.Provider value={{ t: this.translate, language }}>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <>
+            <Header />
+            <Component {...pageProps} />
+          </>
         </ThemeProvider>
       </TranslationsContext.Provider>
     );
