@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from 'theme/global';
+import { APP_NAME } from 'config';
 
 const Styles = () => (
   <>
@@ -15,7 +16,7 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-    const { language } = ctx.res.locals;
+    const { language, translations } = ctx.res.locals;
 
     try {
       ctx.renderPage = () =>
@@ -39,6 +40,7 @@ export default class MyDocument extends Document {
           </>
         ),
         language,
+        translations,
       };
     } finally {
       sheet.seal();
@@ -46,7 +48,8 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const { language } = this.props;
+    const { language, translations } = this.props;
+
     return (
       <Html lang={language}>
         <Head>
@@ -64,6 +67,7 @@ export default class MyDocument extends Document {
           />
           <link
             rel="preload"
+            as="font"
             type="font/woff2"
             crossOrigin="anonymous"
             href="/static/visby.woff2"
@@ -72,6 +76,16 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.${APP_NAME} = {
+                translations: ${JSON.stringify(translations)},
+                language: ${JSON.stringify(language)},
+              }`,
+            }}
+          />
         </body>
       </Html>
     );

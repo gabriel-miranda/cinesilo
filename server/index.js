@@ -59,6 +59,8 @@ const contentful = new ContentfulWrapper({
     );
   });
 
+  server.get('/_next/*', (req, res) => handle(req, res));
+
   server.use(languageMiddleware);
 
   server.use(translationsMiddleware);

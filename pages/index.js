@@ -6,12 +6,14 @@ import Container from 'components/Container';
 import Paginator from 'components/Paginator';
 import withData from 'modules/withData';
 import { PAGE_SIZE } from 'config';
+import useTranslations from 'modules/translations/hook';
 
 const Home = ({ data: { posts }, page }) => {
   // The page doesn't exist yet
   if (page > Math.ceil(posts.total / PAGE_SIZE)) {
     return <Error statusCode={404} />;
   }
+  const t = useTranslations();
   return (
     <>
       <Head>
@@ -21,6 +23,7 @@ const Home = ({ data: { posts }, page }) => {
         {posts.items.map(post => (
           <div key={post.id}>{post.title}</div>
         ))}
+        <p>{t('movies')}</p>
         <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
       </Container>
     </>
