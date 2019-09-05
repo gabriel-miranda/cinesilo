@@ -1,5 +1,7 @@
 module.exports = {
-  movies: 'movies',
-  series: 'series',
-  anime: 'anime',
+  movies: 'Movies',
+  series: 'Tv shows',
+  anime: 'Anime',
+  search: 'Search',
+  home: 'Home',
 };

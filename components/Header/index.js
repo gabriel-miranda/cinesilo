@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Container from 'components/Container';
+import Drawer from 'components/Drawer';
 import Film from 'components/Icons/film.svg';
 import Menu from 'components/Icons/menu.svg';
+import Logout from 'components/Icons/log-out.svg';
 import Video from 'components/Icons/video.svg';
 import FastForward from 'components/Icons/fast-forward.svg';
 import * as S from './styled';
 
 const Header = () => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
   const as = router.pathname === '/' ? { as: 'h1' } : {};
   return (
     <>
@@ -32,10 +35,17 @@ const Header = () => {
             <S.TitleContainer>
               <Film />
               <S.Title {...as}>
-                <Link href="/">Cinesilo</Link>
+                <Link href="/">
+                  <a>Cinesilo</a>
+                </Link>
               </S.Title>
             </S.TitleContainer>
-            <Menu />
+            {open ? (
+              <Logout onClick={() => setOpen(false)} />
+            ) : (
+              <Menu onClick={() => setOpen(true)} />
+            )}
+            <Drawer open={open} />
           </S.HeaderContent>
         </Container>
       </S.Header>

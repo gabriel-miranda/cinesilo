@@ -25,13 +25,13 @@ const theme = {
   header: {
     position: 'sticky',
     top: 0,
-    height: '60px',
+    height: GLOBALS.SIZES.HEADER,
     background: GLOBALS.COLORS.BLACK,
     font: {
       color: GLOBALS.COLORS.WHITE,
     },
     title: {
-      margin: `0 0 9px ${GLOBALS.SIZES.PADDING.MAIN}`,
+      margin: `0 0 7px ${GLOBALS.SIZES.PADDING.MAIN}`,
       font: {
         size: '30px',
         family: GLOBALS.FONTS.CINESILO,
@@ -41,6 +41,49 @@ const theme = {
   container: {
     width: '1250px',
     padding: `0 ${GLOBALS.SIZES.PADDING.MAIN}`,
+  },
+  drawer: {
+    background: GLOBALS.COLORS.BLACK,
+    position: 'absolute',
+    top: GLOBALS.SIZES.HEADER,
+    width: '100%',
+    minheight: '100vh',
+    padding: `0 ${GLOBALS.SIZES.PADDING.MAIN}`,
+    form: {
+      position: 'relative',
+      padding: '25px 0',
+      bordertop: `1px solid ${GLOBALS.COLORS.WHITE_OPACITY}`,
+    },
+    item: {
+      color: GLOBALS.COLORS.WHITE,
+      fontfamily: GLOBALS.FONTS.CINESILO,
+      padding: '1em 1.5em',
+      background: GLOBALS.COLORS.PURPLE_MOVIE_OPACITY,
+      display: 'inline-block',
+      width: '100%',
+      margin: '0 0 1em 0',
+      borderradius: GLOBALS.RADIUS.SM,
+    },
+  },
+  search: {
+    width: '100%',
+    border: 0,
+    borderradius: GLOBALS.RADIUS.LG,
+    lineheight: GLOBALS.SIZES.SEARCH.HEIGHT,
+    padding: `0 ${GLOBALS.SIZES.SEARCH.PADDING}`,
+    button: {
+      fill: GLOBALS.COLORS.PURPLE_MOVIE,
+      background: 'transparent',
+      position: 'absolute',
+      display: 'flex',
+      margin: 'auto',
+      height: GLOBALS.SIZES.SEARCH.HEIGHT,
+      padding: 0,
+      top: 0,
+      bottom: 0,
+      border: 0,
+      right: GLOBALS.SIZES.SEARCH.PADDING,
+    },
   },
 };
 
