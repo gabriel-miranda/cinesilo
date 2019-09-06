@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const Drawer = styled.section`
-  display: flex;
   flex-direction: column;
+  left: 0;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
   background: ${({ theme }) => theme.drawer.background};
   position: ${({ theme }) => theme.drawer.position};
   top: ${({ theme }) => theme.drawer.top};
-  left: ${({ open }) => (open ? 0 : '100%')};
   width: ${({ theme }) => theme.drawer.width};
   min-height: ${({ theme }) => theme.drawer.minheight};
   padding: ${({ theme }) => theme.drawer.padding};

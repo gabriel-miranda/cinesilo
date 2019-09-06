@@ -24,6 +24,7 @@ const Search = () => {
         onChange={({ target: { value } }) => setQuery(value)}
         type="search"
         placeholder={t('search')}
+        autoFocus
       />
       <S.Button show={!query}>
         <SearchIcon height="17" width="17" />

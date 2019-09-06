@@ -67,7 +67,11 @@ const resolvers = contentful => ({
       skip,
     };
     try {
-      const posts = await contentful.get(query);
+      const _posts = await contentful.get(query);
+      const posts = {
+        total: _posts.total,
+        items: _posts.items.map(formatPost),
+      };
       return posts;
     } catch (e) {
       log.error(e);

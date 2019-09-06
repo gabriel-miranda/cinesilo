@@ -2,30 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Error from 'next/error';
-import Container from 'components/Container';
+import HomeGrid from 'components/HomeGrid';
 import Paginator from 'components/Paginator';
 import withData from 'modules/withData';
 import { PAGE_SIZE } from 'config';
-import useTranslations from 'modules/translations/hook';
 
 const Home = ({ data: { posts }, page }) => {
   // The page doesn't exist yet
   if (page > Math.ceil(posts.total / PAGE_SIZE)) {
     return <Error statusCode={404} />;
   }
-  const t = useTranslations();
   return (
     <>
       <Head>
         <title>Nextful - The next blogging platform you will use.</title>
       </Head>
-      <Container>
-        {posts.items.map(post => (
-          <div key={post.id}>{post.title}</div>
-        ))}
-        <p>{t('movies')}</p>
+      <>
+        <HomeGrid posts={posts.items} />
         <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
-      </Container>
+      </>
     </>
   );
 };
@@ -58,6 +53,10 @@ export default withData(
         title
         description
         created
+        image {
+          url
+          title
+        }
       }
     }
   }
