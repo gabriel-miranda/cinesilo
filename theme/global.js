@@ -11,6 +11,11 @@ const COLORS = {
 };
 
 const SIZES = {
+  SCREEN: {
+    DESKTOP: '1250px',
+    TABLET: '960px',
+    MOBILE: '768px',
+  },
   SUBHEADER: '35px',
   HEADER: '60px',
   PADDING: {
@@ -59,6 +64,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   *:focus {
     outline: none;
+  }
+  ::placeholder {
+    opacity: 0.5;
   }
 `;
 

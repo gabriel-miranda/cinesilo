@@ -4,6 +4,11 @@ export const Form = styled.form`
   position: ${({ theme }) => theme.drawer.form.position};
   padding: ${({ theme }) => theme.drawer.form.padding};
   border-top: ${({ theme }) => theme.drawer.form.bordertop};
+  ${({ theme }) => theme.media.tablet`
+    line-height: 30px;
+    border: none;
+    width: 180px;
+  `}
 `;
 
 export const Button = styled.button`
@@ -21,6 +26,10 @@ export const Button = styled.button`
   svg path {
     fill: ${({ theme }) => theme.search.button.fill};
   }
+  ${({ theme }) => theme.media.tablet`
+    height: 30px;
+    right: 0.75em;
+  `}
 `;
 
 export const Input = styled.input`
@@ -29,8 +38,8 @@ export const Input = styled.input`
   border-radius: ${({ theme }) => theme.search.borderradius};
   line-height: ${({ theme }) => theme.search.lineheight};
   padding: ${({ theme }) => theme.search.padding};
-  &:after,
-  &:before {
-    display: none;
-  }
+  ${({ theme }) => theme.media.tablet`
+    line-height: 30px;
+    font-size: 13px;
+  `}
 `;

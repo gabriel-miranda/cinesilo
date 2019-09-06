@@ -1,4 +1,22 @@
+import { css } from 'styled-components';
 import * as GLOBALS from './global';
+
+const SCREEN_SIZES = {
+  mobile: `min-width: ${GLOBALS.SIZES.SCREEN.MOBILE}`,
+  tablet: `min-width: ${GLOBALS.SIZES.SCREEN.TABLET}`,
+  desktop: `min-width: ${GLOBALS.SIZES.SCREEN.DESKTOP}`,
+};
+
+/* eslint-disable-next-line import/prefer-default-export */
+export const media = Object.keys(SCREEN_SIZES).reduce((accumulator, label) => {
+  const query = SCREEN_SIZES[label];
+  accumulator[label] = (...args) => css`
+    @media screen and (${query}) {
+      ${css(...args)}
+    }
+  `;
+  return accumulator;
+}, {});
 
 const theme = {
   truncate: `
@@ -87,6 +105,7 @@ const theme = {
       right: GLOBALS.SIZES.SEARCH.PADDING,
     },
   },
+  media,
 };
 
 export default theme;

@@ -3,10 +3,9 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import useActiveSection from 'modules/activesection/hook';
 import Container from 'components/Container';
-import Drawer from 'components/Drawer';
+import MobileNav from 'components/Nav/mobile';
+import DesktopNav from 'components/Nav/desktop';
 import Film from 'components/Icons/film.svg';
-import Menu from 'components/Icons/menu.svg';
-import Logout from 'components/Icons/log-out.svg';
 import Video from 'components/Icons/video.svg';
 import FastForward from 'components/Icons/fast-forward.svg';
 import * as S from './styled';
@@ -48,10 +47,8 @@ const Header = () => {
                 </Link>
               </S.Title>
             </S.TitleContainer>
-            <S.Button onClick={() => setOpen(!open)}>
-              {open ? <Logout /> : <Menu />}
-            </S.Button>
-            <Drawer open={open} active={section} />
+            <MobileNav open={open} setOpen={setOpen} active={section} />
+            <DesktopNav active={section} />
           </S.HeaderContent>
         </Container>
       </S.Header>

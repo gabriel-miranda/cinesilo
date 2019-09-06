@@ -53,13 +53,6 @@ export const TitleContainer = styled.div`
   z-index: ${({ theme }) => theme.header.zindex};
 `;
 
-export const Button = styled.button`
-  border: 0;
-  background: none;
-  display: flex;
-  z-index: ${({ theme }) => theme.header.zindex};
-`;
-
 export const Title = styled.span`
   display: inline-block;
   margin: ${({ theme }) => theme.header.title.margin};
