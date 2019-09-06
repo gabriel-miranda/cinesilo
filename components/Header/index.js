@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
+import useActiveSection from 'modules/activesection/hook';
 import Container from 'components/Container';
 import Drawer from 'components/Drawer';
 import Film from 'components/Icons/film.svg';
@@ -12,7 +13,14 @@ import * as S from './styled';
 
 const Header = () => {
   const router = useRouter();
+  const section = useActiveSection();
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', () => setOpen(false));
+    return function cleanup() {
+      Router.events.off('routeChangeComplete', () => setOpen(false));
+    };
+  }, [open]);
   const as = router.pathname === '/' ? { as: 'h1' } : {};
   return (
     <>
@@ -40,12 +48,10 @@ const Header = () => {
                 </Link>
               </S.Title>
             </S.TitleContainer>
-            {open ? (
-              <Logout onClick={() => setOpen(false)} />
-            ) : (
-              <Menu onClick={() => setOpen(true)} />
-            )}
-            <Drawer open={open} />
+            <S.Button onClick={() => setOpen(!open)}>
+              {open ? <Logout /> : <Menu />}
+            </S.Button>
+            <Drawer open={open} active={section} />
           </S.HeaderContent>
         </Container>
       </S.Header>

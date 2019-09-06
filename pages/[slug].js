@@ -12,6 +12,7 @@ const Post = ({ data: { post }, errors }) => {
     const [e] = errors;
     return <Error statusCode={e.statusCode || 500} />;
   }
+
   return (
     <>
       <Head>
@@ -47,6 +48,7 @@ export default withData(
   ({ slug }) => `{
     post(slug: "${slug}") {
       title
+      category
       description
       created
       body

@@ -1,7 +1,7 @@
 const reQuery = /[?&]+/;
 const reDoubleSlashes = /(\/\/+)/;
 
-const slashesMiddleware = (append = true, options) => {
+const slashesMiddleware = (append = false, options) => {
   options = options || {};
   return (req, res, next) => {
     if (req.method === 'GET') {

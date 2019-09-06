@@ -33,6 +33,11 @@ const RADIUS = {
   SM: '5px',
 };
 
+const ZINDEX = {
+  HEADER: 200,
+  DRAWER: 100,
+};
+
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -49,6 +54,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+  img {
+    max-width: 100%;
+  }
+  *:focus {
+    outline: none;
+  }
 `;
 
-export { COLORS, FONTS, SIZES, RADIUS };
+export { COLORS, FONTS, SIZES, RADIUS, ZINDEX };

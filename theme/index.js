@@ -27,6 +27,7 @@ const theme = {
     top: 0,
     height: GLOBALS.SIZES.HEADER,
     background: GLOBALS.COLORS.BLACK,
+    zindex: GLOBALS.ZINDEX.HEADER,
     font: {
       color: GLOBALS.COLORS.WHITE,
     },
@@ -44,11 +45,12 @@ const theme = {
   },
   drawer: {
     background: GLOBALS.COLORS.BLACK,
+    zindex: GLOBALS.ZINDEX.DRAWER,
     position: 'absolute',
-    top: GLOBALS.SIZES.HEADER,
+    top: 0,
     width: '100%',
     minheight: '100vh',
-    padding: `0 ${GLOBALS.SIZES.PADDING.MAIN}`,
+    padding: `${GLOBALS.SIZES.HEADER} ${GLOBALS.SIZES.PADDING.MAIN} 0`,
     form: {
       position: 'relative',
       padding: '25px 0',

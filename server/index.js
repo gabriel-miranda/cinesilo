@@ -14,12 +14,14 @@ const { translationsMiddleware } = require('./middlewares/translations');
 const { slashesMiddleware } = require('./middlewares/slashes');
 const { passportSetup } = require('./middlewares/passport');
 const { ContentfulWrapper } = require('../modules/contentful');
+const { translations } = require('../modules/translations');
 const {
   PORT,
   SPACE,
   ACCESS_TOKEN,
   BASE_URL,
   DEV,
+  CATEGORIES,
 } = require('../config/server');
 
 const dev = DEV;
@@ -77,6 +79,13 @@ const contentful = new ContentfulWrapper({
   server.use(contentfulMiddleware({ contentful }));
 
   server.use('/api', api);
+
+  ['search', ...Object.keys(CATEGORIES)].forEach(category => {
+    // This routes apply only to spanish because at this moment is the only
+    // language we support, do a forEach with more languages to make it work
+    const current = `/${translations.es[category].toLowerCase()}`;
+    server.get(current, (req, res) => app.render(req, res, current));
+  });
 
   server.get('*', (req, res) => handle(req, res));
 

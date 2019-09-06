@@ -50,6 +50,14 @@ export const HeaderContent = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  z-index: ${({ theme }) => theme.header.zindex};
+`;
+
+export const Button = styled.button`
+  border: 0;
+  background: none;
+  display: flex;
+  z-index: ${({ theme }) => theme.header.zindex};
 `;
 
 export const Title = styled.span`

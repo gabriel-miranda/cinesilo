@@ -1,36 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Search from 'components/Icons/search.svg';
+import Search from 'components/Search';
 import useTranslations from 'modules/translations/hook';
 import { CATEGORIES } from 'config';
 import * as S from './styled';
 
-const DrawerItem = item => {
+const HOME = 'home';
+
+const DrawerItem = ({ item, active }) => {
   const t = useTranslations();
   const label = t(item);
-  const link = item === 'home' ? '/' : `/${label.toLowerCase()}/`;
+  const link = item === HOME ? '/' : `/${label.toLowerCase()}`;
   return (
     <li key={item}>
       <Link href={link}>
-        <S.LinkItem>{label}</S.LinkItem>
+        <S.LinkItem active={item === active}>{label}</S.LinkItem>
       </Link>
     </li>
   );
 };
 
-const Drawer = ({ open }) => {
-  const t = useTranslations();
+DrawerItem.propTypes = {
+  item: PropTypes.string.isRequired,
+  active: PropTypes.string.isRequired,
+};
+
+const Drawer = ({ open, active }) => {
   return (
     <S.Drawer open={open}>
-      <S.Form>
-        <S.Input type="search" placeholder={t('search')} />
-        <S.Icon>
-          <Search height="17" width="17" />
-        </S.Icon>
-      </S.Form>
+      <Search />
       <nav>
-        <ul>{['home', ...CATEGORIES].map(DrawerItem)}</ul>
+        <ul>
+          {[HOME, ...Object.keys(CATEGORIES)]
+            .map(item => ({ item, active }))
+            .map(DrawerItem)}
+        </ul>
       </nav>
     </S.Drawer>
   );
@@ -38,6 +43,7 @@ const Drawer = ({ open }) => {
 
 Drawer.propTypes = {
   open: PropTypes.bool.isRequired,
+  active: PropTypes.string.isRequired,
 };
 
 export default Drawer;
