@@ -53,6 +53,7 @@ export default withData(
         title
         description
         created
+        category
         image {
           url
           title

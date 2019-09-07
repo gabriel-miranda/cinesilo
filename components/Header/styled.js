@@ -29,7 +29,7 @@ export const SubheaderText = styled.h2`
   font-weight: ${({ theme }) => theme.subheader.font.weight};
   font-size: ${({ theme }) => theme.subheader.font.size};
   margin: ${({ theme }) => theme.subheader.font.margin};
-  ${({ theme }) => theme.truncate}
+  ${({ theme }) => theme.truncate()}
 `;
 
 export const Header = styled.header`

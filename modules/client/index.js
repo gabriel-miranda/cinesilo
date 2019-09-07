@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { log } from '../logger';
 
 export default class ApiClient {
   static METHODS = ['get', 'post', 'put', 'patch', 'del'];
@@ -10,6 +11,7 @@ export default class ApiClient {
         path,
         { params = {}, data = {}, query = {} } = {},
       ) => {
+        log.debug(`api:client request ${method}: ${baseUrl}${path}`);
         const request = axios[method](`${baseUrl}${path}`, {
           params,
           data,

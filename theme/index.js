@@ -19,11 +19,11 @@ export const media = Object.keys(SCREEN_SIZES).reduce((accumulator, label) => {
 }, {});
 
 const theme = {
-  truncate: `
+  truncate: (lines = 1) => `
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: ${lines};
   `,
   subheader: {
     height: GLOBALS.SIZES.SUBHEADER,
@@ -103,6 +103,18 @@ const theme = {
       bottom: 0,
       border: 0,
       right: GLOBALS.SIZES.SEARCH.PADDING,
+    },
+  },
+  thumbnail: {
+    icon: {
+      movies: GLOBALS.COLORS.PURPLE_MOVIE_OPACITY,
+      series: GLOBALS.COLORS.BLUE_SERIES_OPACITY,
+      anime: GLOBALS.COLORS.GREEN_ANIME_OPACITY,
+    },
+    background: {
+      movies: GLOBALS.COLORS.PURPLE_MOVIE,
+      series: GLOBALS.COLORS.BLUE_SERIES,
+      anime: GLOBALS.COLORS.GREEN_ANIME,
     },
   },
   media,

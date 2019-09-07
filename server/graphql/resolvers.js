@@ -5,10 +5,17 @@ const { ServerError, NotFound } = require('../../modules/error');
 const type = 'post';
 
 function formatTags(tags) {
+  if (!tags || !tags.fields) {
+    return [];
+  }
   return tags.map(tag => tag.fields.name);
 }
 
 function formatImage(image) {
+  // TODO: Send default image
+  if (!image || !image.fields) {
+    return { title: '', url: '' };
+  }
   const { file, title } = image.fields;
   const { url, contentType } = file;
   const size = file.details.image;
@@ -21,6 +28,10 @@ function formatImage(image) {
 }
 
 function formatAuthor(author) {
+  // TODO: Send default author
+  if (!author || !author.fields) {
+    return { image: '', name: '', bio: '' };
+  }
   const image = formatImage(author.fields.image);
   return {
     ...author.fields,
@@ -65,6 +76,7 @@ const resolvers = contentful => ({
       content_type: type,
       limit,
       skip,
+      order: '-sys.createdAt',
     };
     try {
       const _posts = await contentful.get(query);

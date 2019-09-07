@@ -1,21 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'components/Container';
+import Thumbnail, { SIZES } from 'components/Thumbnail';
 import * as S from './styled';
 
-const GridItem = (post, index) => (
-  <S.GridItem key={`${post.title}-${index}`}>
-    <S.Title>{post.title}</S.Title>
-  </S.GridItem>
-);
+const prepareGrid = (post, index) => {
+  if (index > 0) {
+    delete post.description;
+  }
+  return post;
+};
+
+const addSizes = (post, index) => {
+  switch (index) {
+    case 0:
+      post.size = SIZES.LG;
+      break;
+    case 1:
+      post.size = SIZES.MD;
+      break;
+    default:
+      post.size = SIZES.SM;
+      break;
+  }
+  return post;
+};
 
 const HomeGrid = ({ posts }) => (
   <S.Section>
     <Container>
       <S.Grid>
-        {Array(4)
-          .fill(posts[0])
-          .map(GridItem)}
+        {posts
+          .map(prepareGrid)
+          .map(addSizes)
+          .map(Thumbnail)}
       </S.Grid>
     </Container>
   </S.Section>

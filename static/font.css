@@ -3,6 +3,5 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: local('VisbyRoundCF-DemiBold'),
-    url('/static/visby.woff2') format('woff2');
+  src: local('VisbyRoundCF-Medium'), url('/static/visby.woff2') format('woff2');
 }
