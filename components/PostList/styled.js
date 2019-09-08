@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  margin: 50px 0;
   ${({ theme }) => theme.media.tablet`
     width: calc(100% - 336px);
   `}

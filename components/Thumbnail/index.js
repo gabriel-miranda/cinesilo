@@ -100,7 +100,7 @@ const Thumbnail = ({
           alt={image.title}
         />
       </S.Figure>
-      <Link href="[slug]" as={`/${slug}`}>
+      <Link href="/[slug]" as={`/${slug}`}>
         <S.Content category={category}>
           <IconWrapper category={category}>
             <CategoryIcon width="20" height="20" />

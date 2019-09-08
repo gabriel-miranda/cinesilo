@@ -1,6 +1,7 @@
 const { log } = require('../../modules/logger');
 const GraphQLJSON = require('../graphql/scalars');
 const { ServerError, NotFound } = require('../../modules/error');
+const { CATEGORIES } = require('../../config/server');
 
 const type = 'post';
 
@@ -54,14 +55,14 @@ function formatPost(post) {
 const resolvers = contentful => ({
   JSON: GraphQLJSON,
   post: async ({ slug }) => {
-    const query = {
+    const q = {
       content_type: type,
       'fields.slug': slug,
     };
     try {
       const {
         items: [post],
-      } = await contentful.get(query);
+      } = await contentful.get(q);
       if (!post) {
         throw new NotFound();
       }
@@ -71,15 +72,24 @@ const resolvers = contentful => ({
       throw new Error(JSON.stringify(e));
     }
   },
-  posts: async ({ limit = 10, skip = 0 }) => {
-    const query = {
+  posts: async ({
+    limit = 10,
+    skip = 0,
+    order = '-sys.createdAt',
+    category = Object.keys(CATEGORIES).join(),
+    query = null,
+  }) => {
+    const _query = query ? { query } : {};
+    const q = {
       content_type: type,
       limit,
       skip,
-      order: '-sys.createdAt',
+      order,
+      'fields.category[in]': category,
+      ..._query,
     };
     try {
-      const _posts = await contentful.get(query);
+      const _posts = await contentful.get(q);
       const posts = {
         total: _posts.total,
         items: _posts.items.map(formatPost),

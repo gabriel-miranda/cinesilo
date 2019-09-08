@@ -17,7 +17,7 @@ const Home = ({ data: { posts }, page }) => {
   return (
     <>
       <Head>
-        <title>Nextful - The next blogging platform you will use.</title>
+        <title>Cinesilo - cine series y entretenimiento</title>
       </Head>
       <>
         <HomeGrid posts={posts.items} />
