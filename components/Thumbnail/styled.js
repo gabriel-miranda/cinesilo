@@ -72,6 +72,9 @@ export const Icon = styled.span`
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+`;
+
+export const GridIcon = styled(Icon)`
   ${({ theme }) => theme.media.mobile`
     background: none;
     box-shadow: none;
@@ -82,15 +85,22 @@ export const Icon = styled.span`
   `}
 `;
 
+export const PlainIcon = styled(Icon)`
+  background: none;
+  box-shadow: none;
+  margin: 30px 0 0;
+  align-items: flex-end;
+  justify-content: flex-start;
+`;
+
 export const Footer = styled.footer`
   color: white;
 `;
 
 export const Title = styled.h2`
-  font-size: 24px;
+  font-size: 18px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   ${({ theme }) => theme.media.mobile`
-    font-size: 18px;
     ${theme.truncate(2)}
   `}
   ${({ theme }) => theme.media.tablet`

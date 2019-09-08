@@ -50,8 +50,19 @@ const getIcon = category => {
   }
 };
 
-function getImageSize(index) {
-  switch (index) {
+const getIconWrapper = icon => {
+  switch (icon) {
+    case 'grid':
+      return S.GridIcon;
+    case 'plain':
+      return S.PlainIcon;
+    default:
+      return S.Icon;
+  }
+};
+
+function getImageSize(size) {
+  switch (size) {
     case SIZES.LG:
       return { width: 585, height: 600 };
     case SIZES.MD:
@@ -74,12 +85,15 @@ const Thumbnail = ({
   description,
   category,
   image,
+  icon,
+  as,
 }) => {
   const CategoryIcon = getIcon(category);
   const ArticleComponent = getArticle(size);
   const TitleComponent = getTitle(size);
+  const IconWrapper = getIconWrapper(icon);
   return (
-    <ArticleComponent key={title}>
+    <ArticleComponent as={as} key={slug}>
       <S.Figure>
         <S.Image
           src={getImage({ url: image.url, ...getImageSize(size) })}
@@ -88,9 +102,9 @@ const Thumbnail = ({
       </S.Figure>
       <Link href="[slug]" as={`/${slug}`}>
         <S.Content category={category}>
-          <S.Icon category={category}>
+          <IconWrapper category={category}>
             <CategoryIcon width="20" height="20" />
-          </S.Icon>
+          </IconWrapper>
           {(title || created || description) && (
             <S.Footer>
               {title && <TitleComponent type={size}>{title}</TitleComponent>}
@@ -108,10 +122,15 @@ Thumbnail.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string,
   size: PropTypes.string,
+  icon: PropTypes.string,
   created: PropTypes.string,
   description: PropTypes.string,
   category: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string,
+  }).isRequired,
+  as: PropTypes.string,
 };
 
 Thumbnail.defaultProps = {
@@ -119,6 +138,8 @@ Thumbnail.defaultProps = {
   size: null,
   created: null,
   description: null,
+  icon: null,
+  as: 'article',
 };
 
 export default Thumbnail;

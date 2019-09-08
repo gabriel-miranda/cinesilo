@@ -38,6 +38,7 @@ export const Header = styled.header`
   height: ${({ theme }) => theme.header.height};
   background: ${({ theme }) => theme.header.background};
   color: ${({ theme }) => theme.header.font.color};
+  z-index: ${({ theme }) => theme.header.zindex + 200};
   ${align}
 `;
 

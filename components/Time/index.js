@@ -5,10 +5,10 @@ import * as S from './styled';
 
 const formatDate = date => new Date(date).toDateString().split(' ');
 
-const Time = ({ children }) => {
+const Time = ({ children, grey }) => {
   const [, month, day, year] = formatDate(children);
   return (
-    <S.TimeContainer>
+    <S.TimeContainer grey={grey}>
       <Calendar width="14" height="14" />
       <S.Time>
         {month} {day}, {year}
@@ -19,6 +19,11 @@ const Time = ({ children }) => {
 
 Time.propTypes = {
   children: PropTypes.string.isRequired,
+  grey: PropTypes.bool,
+};
+
+Time.defaultProps = {
+  grey: null,
 };
 
 export default Time;

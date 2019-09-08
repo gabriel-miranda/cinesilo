@@ -4,26 +4,29 @@ import Container from 'components/Container';
 import Thumbnail, { SIZES } from 'components/Thumbnail';
 import * as S from './styled';
 
-const prepareGrid = (post, index) => {
+const preparePost = (post, index) => {
+  const _post = { ...post };
   if (index > 0) {
-    delete post.description;
+    delete _post.description;
   }
-  return post;
+  _post.icon = 'grid';
+  return _post;
 };
 
 const addSizes = (post, index) => {
+  const _post = { ...post };
   switch (index) {
     case 0:
-      post.size = SIZES.LG;
+      _post.size = SIZES.LG;
       break;
     case 1:
-      post.size = SIZES.MD;
+      _post.size = SIZES.MD;
       break;
     default:
-      post.size = SIZES.SM;
+      _post.size = SIZES.SM;
       break;
   }
-  return post;
+  return _post;
 };
 
 const HomeGrid = ({ posts }) => (
@@ -31,7 +34,7 @@ const HomeGrid = ({ posts }) => (
     <Container>
       <S.Grid>
         {posts
-          .map(prepareGrid)
+          .map(preparePost)
           .map(addSizes)
           .map(Thumbnail)}
       </S.Grid>
