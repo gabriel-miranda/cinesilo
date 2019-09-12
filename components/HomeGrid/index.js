@@ -34,6 +34,7 @@ const HomeGrid = ({ posts }) => (
     <Container>
       <S.Grid>
         {posts
+          .slice(0, 4)
           .map(preparePost)
           .map(addSizes)
           .map(Thumbnail)}
