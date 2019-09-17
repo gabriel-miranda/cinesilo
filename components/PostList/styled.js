@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
-  margin: 50px 0;
-  ${({ theme }) => theme.media.tablet`
-    width: calc(100% - 336px);
-  `}
-`;
-
 export const Item = styled.li`
   display: flex;
   flex-direction: column;
@@ -31,7 +24,9 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  margin: 50px 0;
+`;
 
 export const Title = styled.h2`
   font-size: 21px;

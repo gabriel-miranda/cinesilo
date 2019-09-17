@@ -6,6 +6,7 @@ import HomeGrid from 'components/HomeGrid';
 import HomeCarousel from 'components/HomeCarousel';
 import PostList from 'components/PostList';
 import Paginator from 'components/Paginator';
+import { Layout, RightContent, Aside } from 'components/Layout';
 import withData from 'modules/withData';
 import { PAGE_SIZE } from 'config';
 
@@ -22,7 +23,12 @@ const Home = ({ data: { posts }, page }) => {
       <>
         <HomeGrid posts={posts.items} />
         <HomeCarousel posts={posts.items} />
-        <PostList posts={posts.items} />
+        <Layout>
+          <RightContent>
+            <PostList posts={posts.items} />
+          </RightContent>
+          <Aside />
+        </Layout>
         <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
       </>
     </>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from 'components/Container';
 import Thumbnail from 'components/Thumbnail';
 import Time from 'components/Time';
 import FastForward from 'components/Icons/fast-forward.svg';
@@ -25,13 +24,7 @@ const Item = post => {
   );
 };
 
-const PostList = ({ posts }) => (
-  <S.List>
-    <Container>
-      <S.Container>{posts.map(Item)}</S.Container>
-    </Container>
-  </S.List>
-);
+const PostList = ({ posts }) => <S.List>{posts.map(Item)}</S.List>;
 
 PostList.propTypes = {
   posts: PropTypes.arrayOf(
