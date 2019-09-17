@@ -100,7 +100,7 @@ export const Icon = styled.a`
   height: 40px;
   border-radius: 5px;
   margin: 0 20px 20px 0;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 `;

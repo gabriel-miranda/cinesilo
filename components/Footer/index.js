@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Container from 'components/Container';
 import Film from 'components/Icons/film.svg';
 import Facebook from 'components/Icons/facebook.svg';
+import Twitter from 'components/Icons/twitter.svg';
+import Instagram from 'components/Icons/instagram.svg';
 import useTranslations from 'modules/translations/hook';
 import { CATEGORIES } from 'config';
 import * as S from './styled';
@@ -39,7 +41,13 @@ const Footer = () => (
         <S.Column>
           <S.SubTitle>Síguenos en nuestras redes</S.SubTitle>
           <S.Icon>
-            <Facebook height="18" />
+            <Facebook height="15" />
+          </S.Icon>
+          <S.Icon>
+            <Twitter height="15" />
+          </S.Icon>
+          <S.Icon>
+            <Instagram height="15" />
           </S.Icon>
         </S.Column>
       </S.Row>
