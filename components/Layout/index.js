@@ -7,7 +7,9 @@ export const Layout = styled(Container)`
 
 export const RightContent = styled.div`
   flex: 1;
-  padding: 0 20px 0 0;
+  ${({ theme }) => theme.media.tablet`
+    padding: 0 20px 0 0;
+  `}
 `;
 
 export const Aside = styled.aside`

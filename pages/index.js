@@ -27,6 +27,7 @@ const Home = ({ data: { posts }, page }) => {
         <Layout>
           <RightContent>
             <PostList posts={posts.items} />
+            <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
           </RightContent>
           <Aside>
             <SocialButton type="facebook" />
@@ -34,7 +35,6 @@ const Home = ({ data: { posts }, page }) => {
             <SocialButton type="instagram" />
           </Aside>
         </Layout>
-        <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
       </>
     </>
   );

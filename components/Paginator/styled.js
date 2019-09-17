@@ -22,7 +22,7 @@ export const StyledLink = styled.a`
   ${({ selected }) =>
     selected &&
     `
-    background: #000;
+    background: #673ab7;
     color: #fff;
   `}
 `;

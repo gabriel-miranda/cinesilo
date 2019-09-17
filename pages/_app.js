@@ -7,6 +7,7 @@ import Client from 'modules/client/main';
 import TranslationsContext from 'modules/translations/context';
 import ActiveSectionContext from 'modules/activesection/context';
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 const DEFAULT_CATEGORY = 'home';
 
@@ -66,6 +67,7 @@ class MyApp extends App {
             <>
               <Header />
               <Component {...pageProps} />
+              <Footer />
             </>
           </ThemeProvider>
         </TranslationsContext.Provider>
