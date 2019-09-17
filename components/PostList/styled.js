@@ -24,9 +24,7 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-export const List = styled.ul`
-  margin: 50px 0;
-`;
+export const List = styled.ul``;
 
 export const Title = styled.h2`
   font-size: 21px;

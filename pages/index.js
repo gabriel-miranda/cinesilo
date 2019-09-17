@@ -6,6 +6,7 @@ import HomeGrid from 'components/HomeGrid';
 import HomeCarousel from 'components/HomeCarousel';
 import PostList from 'components/PostList';
 import Paginator from 'components/Paginator';
+import SocialButton from 'components/SocialButton';
 import { Layout, RightContent, Aside } from 'components/Layout';
 import withData from 'modules/withData';
 import { PAGE_SIZE } from 'config';
@@ -27,7 +28,11 @@ const Home = ({ data: { posts }, page }) => {
           <RightContent>
             <PostList posts={posts.items} />
           </RightContent>
-          <Aside />
+          <Aside>
+            <SocialButton type="facebook" />
+            <SocialButton type="twitter" />
+            <SocialButton type="instagram" />
+          </Aside>
         </Layout>
         <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
       </>
