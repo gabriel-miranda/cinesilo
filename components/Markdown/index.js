@@ -9,7 +9,7 @@ const IframeComponent = props => (
 );
 
 const Image = ({ title, src }) => (
-  <img src={src} alt={title || 'Cinesilo imagen'} />
+  <S.Image src={src} alt={title || 'Cinesilo imagen'} />
 );
 
 Image.propTypes = {
@@ -22,8 +22,10 @@ Image.defaultProps = {
 };
 
 const overrides = {
-  iframe: IframeComponent,
+  h2: S.Heading2,
+  p: S.P,
   img: Image,
+  iframe: IframeComponent,
 };
 
 const Markdown = ({ children }) => (

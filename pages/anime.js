@@ -18,7 +18,7 @@ const Anime = ({ data: { posts }, page }) => {
       <Head>
         <title>Anime - cine series y entretenimiento | cinesilo </title>
       </Head>
-      <Layout>
+      <Layout spacing>
         <RightContent>
           <PostList posts={posts.items} />
           <Paginator items={posts.total} currentPage={parseInt(page, 10)} />

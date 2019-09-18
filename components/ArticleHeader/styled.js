@@ -34,11 +34,11 @@ export const Overlay = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 80px 0 20px;
+  padding: 115px 0 20px;
   position: relative;
   z-index: 3;
   ${({ theme }) => theme.media.tablet`
-    padding: 120px 0 50px;
+    padding: 165px 0 40px;
   `}
 `;
 
@@ -58,5 +58,6 @@ export const Description = styled.p`
   font-weight: 300;
   ${({ theme }) => theme.media.tablet`
     font-size: 15px;
+    max-width: 620px;
   `}
 `;

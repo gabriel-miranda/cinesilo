@@ -18,7 +18,7 @@ const Cine = ({ data: { posts }, page }) => {
       <Head>
         <title>Cine - cine series y entretenimiento | cinesilo </title>
       </Head>
-      <Layout>
+      <Layout spacing>
         <RightContent>
           <PostList posts={posts.items} />
           <Paginator items={posts.total} currentPage={parseInt(page, 10)} />

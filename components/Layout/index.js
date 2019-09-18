@@ -3,7 +3,7 @@ import Container from 'components/Container/styled';
 
 export const Layout = styled(Container)`
   display: flex;
-  margin-top: 50px;
+  ${({ spacing }) => (spacing ? 'margin-top: 50px' : '')};
 `;
 
 export const RightContent = styled.div`

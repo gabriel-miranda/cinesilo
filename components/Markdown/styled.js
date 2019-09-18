@@ -15,33 +15,23 @@ export const VideoWrapper = styled.div`
   }
 `;
 
-export const MarkdownWrapper = styled(Markdown)`
-  padding-bottom: 4em;
-  > *:not(img) {
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 300;
-    ${({ theme }) => theme.media.tablet`
-      font-size: 17px;
-      line-height: 31px;
-      padding: 0 30px;
-    `}
-  }
+export const P = styled.p`
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 300;
+  ${({ theme }) => theme.media.tablet`
+    font-size: 17px;
+    line-height: 31px;
+  `}
+`;
 
-  p {
-    padding: 1em 0;
-  }
+export const Heading2 = styled.h2`
+  font-size: 25px;
+  border-bottom: 1px solid;
+  padding: 0.75em 30px;
+`;
 
-  h2 {
-    font-size: 25px;
-    border-bottom: 1px solid;
-    padding: 0.75em 30px;
-  }
-
-  strong {
-    font-weight: 600;
-  }
-
+export const Image = styled.img`
   img {
     position: relative;
     left: -30px;
@@ -54,4 +44,6 @@ export const MarkdownWrapper = styled(Markdown)`
   }
 `;
 
-export const P = styled.p``;
+export const MarkdownWrapper = styled(Markdown)`
+  padding-bottom: 4em;
+`;

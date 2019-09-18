@@ -24,7 +24,7 @@ const Home = ({ data: { posts }, page }) => {
       <>
         <HomeGrid posts={posts.items} />
         <HomeCarousel posts={posts.items} />
-        <Layout>
+        <Layout spacing>
           <RightContent>
             <PostList posts={posts.items} />
             <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
