@@ -8,12 +8,16 @@ import DesktopNav from 'components/Nav/desktop';
 import Film from 'components/Icons/film.svg';
 import Video from 'components/Icons/video.svg';
 import FastForward from 'components/Icons/fast-forward.svg';
+import { Waypoint } from 'react-waypoint';
 import * as S from './styled';
 
 const Header = () => {
   const router = useRouter();
   const section = useActiveSection();
   const [open, setOpen] = useState(false);
+  const [fixed, setFixed] = useState(false);
+  const HeaderComponent =
+    router.pathname === '/[slug]' ? S.SlugHeader : S.Header;
   useEffect(() => {
     Router.events.on('routeChangeComplete', () => setOpen(false));
     return function cleanup() {
@@ -36,7 +40,11 @@ const Header = () => {
           </S.HeaderContent>
         </Container>
       </S.SubHeader>
-      <S.Header>
+      <Waypoint
+        onLeave={() => setFixed(true)}
+        onEnter={() => setFixed(false)}
+      />
+      <HeaderComponent fixed={fixed}>
         <Container>
           <S.HeaderContent justify>
             <S.TitleContainer>
@@ -51,7 +59,7 @@ const Header = () => {
             <DesktopNav active={section} />
           </S.HeaderContent>
         </Container>
-      </S.Header>
+      </HeaderComponent>
     </>
   );
 };

@@ -42,6 +42,23 @@ export const Header = styled.header`
   ${align}
 `;
 
+export const SlugHeader = styled(Header)`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35px;
+  background: transparent;
+  transition: background 0.3s ease;
+  ${({ fixed }) =>
+    fixed
+      ? `
+    position: fixed;
+    background: #000;
+    top: 0;
+  `
+      : ''}
+`;
+
 export const HeaderContent = styled.div`
   justify-content: ${({ justify }) =>
     justify ? 'space-between' : 'flex-start'};

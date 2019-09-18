@@ -5,6 +5,7 @@ import Error from 'next/error';
 import PostList from 'components/PostList';
 import Paginator from 'components/Paginator';
 import withData from 'modules/withData';
+import { Layout, RightContent, Aside } from 'components/Layout';
 import { PAGE_SIZE, CATEGORIES } from 'config';
 
 const Cine = ({ data: { posts }, page }) => {
@@ -17,10 +18,13 @@ const Cine = ({ data: { posts }, page }) => {
       <Head>
         <title>Cine - cine series y entretenimiento | cinesilo </title>
       </Head>
-      <>
-        <PostList posts={posts.items} />
-        <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
-      </>
+      <Layout>
+        <RightContent>
+          <PostList posts={posts.items} />
+          <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
+        </RightContent>
+        <Aside />
+      </Layout>
     </>
   );
 };

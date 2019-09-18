@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Error from 'next/error';
 import withData from 'modules/withData';
-import Container from 'components/Container';
-import Time from 'components/Time';
-import Markdown from 'markdown-to-jsx';
+import { Layout, RightContent } from 'components/Layout';
+import ArticleHeader from 'components/ArticleHeader';
+import Markdown from 'components/Markdown';
 
 const Post = ({ data: { post }, errors }) => {
   if (errors) {
@@ -19,11 +19,18 @@ const Post = ({ data: { post }, errors }) => {
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
       </Head>
-      <Container>
-        <h1>{post.title}</h1>
-        <Time>{post.created}</Time>
-        <Markdown>{post.body}</Markdown>
-      </Container>
+      <ArticleHeader
+        bg={post.image.url}
+        created={post.created}
+        description={post.description}
+      >
+        {post.title}
+      </ArticleHeader>
+      <Layout>
+        <RightContent>
+          <Markdown>{post.body}</Markdown>
+        </RightContent>
+      </Layout>
     </>
   );
 };
@@ -35,6 +42,9 @@ Post.propTypes = {
       body: PropTypes.string,
       description: PropTypes.string,
       created: PropTypes.string,
+      image: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      }).isRequired,
     }),
   }).isRequired,
   errors: PropTypes.arrayOf(PropTypes.object),
@@ -49,6 +59,9 @@ export default withData(
     post(slug: "${slug}") {
       title
       category
+      image {
+        url
+      }
       description
       created
       body

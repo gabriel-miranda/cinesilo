@@ -6,7 +6,6 @@ const BOX_GAP = 40;
 
 export const Container = styled.div`
   display: grid;
-  margin: 0 0 50px;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: ${BOX_GAP / 2}px;
   width: calc(80vw * ${BOX_AMOUNT});
