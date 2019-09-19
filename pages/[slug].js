@@ -26,7 +26,7 @@ const Post = ({ data: { post }, errors }) => {
       >
         {post.title}
       </ArticleHeader>
-      <Layout>
+      <Layout small>
         <RightContent>
           <Markdown>{post.body}</Markdown>
         </RightContent>

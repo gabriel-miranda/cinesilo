@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './styled';
 
@@ -8,23 +8,23 @@ const IframeComponent = props => (
   </S.VideoWrapper>
 );
 
-const Image = ({ title, src }) => (
-  <S.Image src={src} alt={title || 'Cinesilo imagen'} />
-);
-
-Image.propTypes = {
-  title: PropTypes.string,
-  src: PropTypes.string.isRequired,
+const P = props => {
+  const { children } = props;
+  return children.some(child => typeof child === 'string') ? (
+    <S.P {...props} />
+  ) : (
+    <>{children}</>
+  );
 };
 
-Image.defaultProps = {
-  title: null,
+P.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const overrides = {
   h2: S.Heading2,
-  p: S.P,
-  img: Image,
+  p: P,
+  img: S.Image,
   iframe: IframeComponent,
 };
 

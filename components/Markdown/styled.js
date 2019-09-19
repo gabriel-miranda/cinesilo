@@ -3,6 +3,7 @@ import Markdown from 'markdown-to-jsx';
 
 export const VideoWrapper = styled.div`
   position: relative;
+  display: block;
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
@@ -19,31 +20,30 @@ export const P = styled.p`
   font-size: 14px;
   line-height: 24px;
   font-weight: 300;
+  padding: 0 20px;
+  display: inline-block;
   ${({ theme }) => theme.media.tablet`
     font-size: 17px;
     line-height: 31px;
+    padding: 0 70px;
   `}
 `;
 
 export const Heading2 = styled.h2`
   font-size: 25px;
   border-bottom: 1px solid;
-  padding: 0.75em 30px;
+  padding: 0.75em 20px;
 `;
 
 export const Image = styled.img`
-  img {
-    position: relative;
-    left: -30px;
-    width: calc(100% + 60px);
-    max-width: none;
-    ${({ theme }) => theme.media.tablet`
-      left: -20px;
-      width: calc(100% + 40px);
-    `}
-  }
+  ${({ theme }) => theme.media.tablet`
+    border-radius: 5px;
+  `}
 `;
 
 export const MarkdownWrapper = styled(Markdown)`
-  padding-bottom: 4em;
+  padding: 2em 0 4em;
+  > * {
+    margin: 1em 0;
+  }
 `;

@@ -4,6 +4,7 @@ import Container from 'components/Container/styled';
 export const Layout = styled(Container)`
   display: flex;
   ${({ spacing }) => (spacing ? 'margin-top: 50px' : '')};
+  ${({ small }) => (small ? 'padding: 0' : 'padding: 0 20px')};
 `;
 
 export const RightContent = styled.div`
