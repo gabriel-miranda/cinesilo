@@ -2,16 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Error from 'next/error';
+import { useRouter } from 'next/router';
 import withData from 'modules/withData';
 import { Layout, RightContent } from 'components/Layout';
 import ArticleHeader from 'components/ArticleHeader';
 import Markdown from 'components/Markdown';
+import Disqus from 'components/Disqus';
+import { BASE_URL } from 'config';
 
 const Post = ({ data: { post }, errors }) => {
   if (errors) {
     const [e] = errors;
     return <Error statusCode={e.statusCode || 500} />;
   }
+
+  const router = useRouter();
 
   return (
     <>
@@ -29,6 +34,11 @@ const Post = ({ data: { post }, errors }) => {
       <Layout small>
         <RightContent>
           <Markdown>{post.body}</Markdown>
+          <Disqus
+            identifier={router.query.slug}
+            url={`${BASE_URL}/${router.query.slug}`}
+            title={post.title}
+          />
         </RightContent>
       </Layout>
     </>
