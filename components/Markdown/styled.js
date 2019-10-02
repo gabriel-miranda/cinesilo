@@ -7,6 +7,7 @@ export const VideoWrapper = styled.div`
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
+  margin: 1em 0;
   iframe {
     position: absolute;
     top: 0;
@@ -17,33 +18,38 @@ export const VideoWrapper = styled.div`
 `;
 
 export const P = styled.p`
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 1.9em;
   font-weight: 300;
   padding: 0 20px;
   display: inline-block;
+  margin: 1em 0;
   ${({ theme }) => theme.media.tablet`
-    font-size: 17px;
-    line-height: 31px;
+    font-size: 18px;
     padding: 0 70px;
   `}
 `;
 
 export const Heading2 = styled.h2`
-  font-size: 25px;
-  border-bottom: 1px solid;
-  padding: 0.75em 20px;
+  font-size: 32px;
+  padding: 0 20px;
+  margin: 1.25em 0 0.5em;
+  ${({ theme }) => theme.media.tablet`
+    font-size: 36px;
+    padding: 0 70px;
+  `}
 `;
 
 export const Image = styled.img`
+  margin: 1em 0;
   ${({ theme }) => theme.media.tablet`
     border-radius: 5px;
   `}
 `;
 
 export const MarkdownWrapper = styled(Markdown)`
-  padding: 2em 0 4em;
-  > * {
-    margin: 1em 0;
-  }
+  padding: 1em 0 4em;
+  ${({ theme }) => theme.media.tablet`
+    padding: 1em 20px 4em;
+  `}
 `;

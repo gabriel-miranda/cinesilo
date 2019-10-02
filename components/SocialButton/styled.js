@@ -11,6 +11,20 @@ const Button = styled.a`
   font-family: 'cinesilo';
   color: #fff;
   margin: 0 0 20px;
+  ${({ size }) => {
+    switch (size) {
+      case 'xs':
+        return `
+          padding: 0;
+          width: 40px;
+          height: 40px;
+          margin: 0 15px 0 0;
+          justify-content: center;
+        `;
+      default:
+        return '';
+    }
+  }}
 `;
 
 export const Facebook = styled(Button)`

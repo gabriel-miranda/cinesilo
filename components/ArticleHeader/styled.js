@@ -13,12 +13,12 @@ export const Background = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-  background: url(${({ bg }) => bg});
   background-size: cover;
   background-position: center center;
-  filter: blur(10px);
+  background-image: url(${({ bg }) => bg});
+  background-color: ${({ theme }) => theme.article.header.background};
+  z-index: ${({ theme }) => theme.article.header.zindex};
+  filter: ${({ theme }) => theme.article.header.filter};
 `;
 
 export const Overlay = styled.div`
@@ -29,8 +29,8 @@ export const Overlay = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 2;
+  background-color: ${({ theme }) => theme.article.header.background};
+  z-index: ${({ theme }) => theme.article.header.overlay.zindex};
 `;
 
 export const Content = styled.div`
@@ -38,7 +38,7 @@ export const Content = styled.div`
   position: relative;
   z-index: 3;
   ${({ theme }) => theme.media.tablet`
-    padding: 165px 0 40px;
+    padding: 150px 0 30px;
   `}
 `;
 

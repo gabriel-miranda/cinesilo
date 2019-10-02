@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const COLORS = {
   BLACK: '#000',
+  BLACK_OPACITY: 'rgba(0, 0, 0, 0.7)',
   WHITE: '#fff',
   WHITE_OPACITY: 'rgba(255, 255, 255, 0.4)',
   PURPLE_MOVIE: '#673AB7',
@@ -43,6 +44,10 @@ const RADIUS = {
 const ZINDEX = {
   HEADER: 200,
   DRAWER: 100,
+  ARTICLE: {
+    HEADER: 1,
+    HEADER_OVERLAY: 2,
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`

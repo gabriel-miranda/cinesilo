@@ -7,8 +7,8 @@ const ssrCache = new SSRCache();
 const renderAndCache = app => async (req, res) => {
   const key = SSRCache.key(req, res);
 
-  // If we have a page in the cache, let's serve it
-  if (ssrCache.has(key) && DEV) {
+  // If we have a page in the cache and we're not in DEV, let's serve it
+  if (ssrCache.has(key) && !DEV) {
     log.info(`server:cache: serving from cache ${key}`);
     res.setHeader('x-cache', 'HIT');
     res.send(ssrCache.get(key));

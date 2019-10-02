@@ -117,6 +117,16 @@ const theme = {
       anime: GLOBALS.COLORS.GREEN_ANIME,
     },
   },
+  article: {
+    header: {
+      background: GLOBALS.COLORS.BLACK_OPACITY,
+      filter: 'blur(10px)',
+      zindex: GLOBALS.ZINDEX.ARTICLE.HEADER,
+      overlay: {
+        zindex: GLOBALS.ZINDEX.ARTICLE.HEADER_OVERLAY,
+      },
+    },
+  },
   media,
 };
 

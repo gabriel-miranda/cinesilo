@@ -39,21 +39,26 @@ function getIcon(type) {
   }
 }
 
-const SocialButton = ({ type, ...rest }) => {
+const SocialButton = ({ type, size, ...rest }) => {
   const Component = getComponent(type);
   const Icon = getIcon(type);
   const t = useTranslations();
   return (
-    <Component {...rest}>
+    <Component {...rest} size={size}>
       <Icon height="20" />
-      {t(`follow_${type}`)}
-      <FastForward height="20" />
+      {size !== 'xs' && t(`follow_${type}`)}
+      {(size === 'md' || size === 'lg') && <FastForward height="20" />}
     </Component>
   );
 };
 
 SocialButton.propTypes = {
   type: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['xs', 's', 'md', 'lg']),
+};
+
+SocialButton.defaultProps = {
+  size: 'lg',
 };
 
 export default SocialButton;
