@@ -21,6 +21,12 @@ const Button = styled.a`
           margin: 0 15px 0 0;
           justify-content: center;
         `;
+      case 'md':
+        return `
+          padding: 0 20px;
+          height: 50px;
+          font-size: 14px;
+        `;
       default:
         return '';
     }

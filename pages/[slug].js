@@ -4,14 +4,16 @@ import Head from 'next/head';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import withData from 'modules/withData';
-import { Layout, RightContent } from 'components/Layout';
+import { Layout, LeftContent, Aside } from 'components/Layout';
 import ArticleHeader from 'components/ArticleHeader';
 import ArticleSocialBar from 'components/ArticleSocialBar';
+import ArticleShareBar from 'components/ArticleShareBar';
+import ArticleSidebar from 'components/ArticleSidebar';
 import Markdown from 'components/Markdown';
 import Disqus from 'components/Disqus';
 import { BASE_URL } from 'config';
 
-const Post = ({ data: { post }, errors }) => {
+const Post = ({ data: { post, posts }, errors }) => {
   if (errors) {
     const [e] = errors;
     return <Error statusCode={e.statusCode || 500} />;
@@ -33,15 +35,19 @@ const Post = ({ data: { post }, errors }) => {
         {post.title}
       </ArticleHeader>
       <Layout small>
-        <RightContent>
+        <LeftContent>
           <ArticleSocialBar />
           <Markdown>{post.body}</Markdown>
+          <ArticleShareBar />
           <Disqus
             identifier={router.query.slug}
             url={`${BASE_URL}/${router.query.slug}`}
             title={post.title}
           />
-        </RightContent>
+        </LeftContent>
+        <Aside>
+          <ArticleSidebar posts={posts.items} />
+        </Aside>
       </Layout>
     </>
   );
@@ -58,6 +64,13 @@ Post.propTypes = {
         url: PropTypes.string.isRequired,
       }).isRequired,
     }),
+    posts: PropTypes.shape({
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+        }),
+      ),
+    }).isRequired,
   }).isRequired,
   errors: PropTypes.arrayOf(PropTypes.object),
 };
@@ -78,6 +91,20 @@ export default withData(
       created
       body
       id
+    }
+    posts(limit: 3, skip: 0) {
+      total
+      items {
+        id
+        slug
+        title
+        created
+        category
+        image {
+          url
+          title
+        }
+      }
     }
   }
 `,

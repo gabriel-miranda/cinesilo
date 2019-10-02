@@ -39,14 +39,22 @@ function getIcon(type) {
   }
 }
 
-const SocialButton = ({ type, size, ...rest }) => {
+function getText(share) {
+  if (share) {
+    return 'share';
+  }
+  return 'follow';
+}
+
+const SocialButton = ({ type, size, share, ...rest }) => {
   const Component = getComponent(type);
   const Icon = getIcon(type);
   const t = useTranslations();
+  const prefix = getText(share);
   return (
     <Component {...rest} size={size}>
       <Icon height="20" />
-      {size !== 'xs' && t(`follow_${type}`)}
+      {size !== 'xs' && t(`${prefix}_${type}`)}
       {(size === 'md' || size === 'lg') && <FastForward height="20" />}
     </Component>
   );
@@ -55,10 +63,12 @@ const SocialButton = ({ type, size, ...rest }) => {
 SocialButton.propTypes = {
   type: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'md', 'lg']),
+  share: PropTypes.bool,
 };
 
 SocialButton.defaultProps = {
   size: 'lg',
+  share: false,
 };
 
 export default SocialButton;

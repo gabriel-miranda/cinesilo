@@ -5,7 +5,7 @@ import Error from 'next/error';
 import PostList from 'components/PostList';
 import Paginator from 'components/Paginator';
 import withData from 'modules/withData';
-import { Layout, RightContent, Aside } from 'components/Layout';
+import { Layout, LeftContent, Aside } from 'components/Layout';
 import useTranslations from 'modules/translations/hook';
 import { PAGE_SIZE } from 'config';
 
@@ -24,10 +24,10 @@ export default category => {
           </title>
         </Head>
         <Layout spacing>
-          <RightContent>
+          <LeftContent>
             <PostList posts={posts.items} />
             <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
-          </RightContent>
+          </LeftContent>
           <Aside />
         </Layout>
       </>

@@ -7,7 +7,7 @@ export const Layout = styled(Container)`
   ${({ small }) => (small ? 'padding: 0' : 'padding: 0 20px')};
 `;
 
-export const RightContent = styled.div`
+export const LeftContent = styled.div`
   flex: 1;
   ${({ theme }) => theme.media.tablet`
     padding: 0 20px 0 0;

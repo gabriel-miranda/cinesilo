@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Time from 'components/Time';
-import { Layout, RightContent } from 'components/Layout';
+import { Layout, LeftContent } from 'components/Layout';
 import * as S from './styled';
 
 const ArticleHeader = ({ children, created, description, bg }) => (
@@ -10,11 +10,11 @@ const ArticleHeader = ({ children, created, description, bg }) => (
     <S.Background bg={bg} />
     <S.Content>
       <Layout>
-        <RightContent>
+        <LeftContent>
           <S.Title>{children}</S.Title>
           <Time>{created}</Time>
           <S.Description>{description}</S.Description>
-        </RightContent>
+        </LeftContent>
       </Layout>
     </S.Content>
   </S.Header>

@@ -15,7 +15,7 @@ function getCategory({ pageProps }) {
   if (pageProps.category) {
     return pageProps.category;
   }
-  if (pageProps && pageProps.data && pageProps.data.post) {
+  if (pageProps.data && pageProps.data.post) {
     return pageProps.data.post.category || DEFAULT_CATEGORY;
   }
   return DEFAULT_CATEGORY;
