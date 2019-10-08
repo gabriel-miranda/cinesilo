@@ -22,11 +22,11 @@ const Home = ({ data: { posts }, page }) => {
         <title>Cinesilo - cine series y entretenimiento</title>
       </Head>
       <>
-        <HomeGrid posts={posts.items} />
-        <HomeCarousel posts={posts.items} />
+        <HomeGrid posts={posts.items.slice(0, 4)} />
+        <HomeCarousel posts={posts.items.slice(4, 7)} />
         <Layout spacing>
           <LeftContent>
-            <PostList posts={posts.items} />
+            <PostList posts={posts.items.slice(7, posts.items.length)} />
             <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
           </LeftContent>
           <Aside>

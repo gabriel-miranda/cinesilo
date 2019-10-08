@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
 import { APP_NAME } from 'config';
 import Client from 'modules/client/main';
+import { log } from 'modules/logger';
 import TranslationsContext from 'modules/translations/context';
 import ActiveSectionContext from 'modules/activesection/context';
 import Header from 'components/Header';
@@ -53,7 +54,11 @@ class MyApp extends App {
 
   translate = key => {
     const { translations } = this.props;
-    return translations[key];
+    try {
+      return translations[key];
+    } catch (e) {
+      return key;
+    }
   };
 
   setSection = section => this.setState({ section });

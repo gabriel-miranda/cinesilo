@@ -10,6 +10,7 @@ import ArticleSocialBar from 'components/ArticleSocialBar';
 import ArticleShareBar from 'components/ArticleShareBar';
 import ArticleSidebar from 'components/ArticleSidebar';
 import Markdown from 'components/Markdown';
+import Tags from 'components/Tags';
 import Disqus from 'components/Disqus';
 import { BASE_URL } from 'config';
 
@@ -38,6 +39,7 @@ const Post = ({ data: { post, posts }, errors }) => {
         <LeftContent>
           <ArticleSocialBar />
           <Markdown>{post.body}</Markdown>
+          <Tags tags={post.tags} />
           <ArticleShareBar />
           <Disqus
             identifier={router.query.slug}
@@ -60,6 +62,7 @@ Post.propTypes = {
       body: PropTypes.string,
       description: PropTypes.string,
       created: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string),
       image: PropTypes.shape({
         url: PropTypes.string.isRequired,
       }).isRequired,
@@ -91,6 +94,7 @@ export default withData(
       created
       body
       id
+      tags
     }
     posts(limit: 3, skip: 0) {
       total

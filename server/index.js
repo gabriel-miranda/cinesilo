@@ -70,15 +70,15 @@ const contentful = new ContentfulWrapper({
 
   server.get('/_next/*', (req, res) => handle(req, res));
 
+  server.use(contentfulMiddleware({ contentful }));
+
+  server.use('/api', api);
+
   server.use(languageMiddleware);
 
   server.use(translationsMiddleware);
 
   server.use(slashesMiddleware());
-
-  server.use(contentfulMiddleware({ contentful }));
-
-  server.use('/api', api);
 
   ['search', ...Object.keys(CATEGORIES)].forEach(category => {
     // This routes apply only to spanish because at this moment is the only

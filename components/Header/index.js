@@ -9,13 +9,49 @@ import Film from 'components/Icons/film.svg';
 import Video from 'components/Icons/video.svg';
 import FastForward from 'components/Icons/fast-forward.svg';
 import { Waypoint } from 'react-waypoint';
+import Client from 'modules/client/main';
+import { log } from 'modules/logger';
 import * as S from './styled';
+
+const api = new Client();
+
+function useRandomPost() {
+  const [post, setPost] = useState(null);
+  useEffect(() => {
+    async function getPosts() {
+      try {
+        const {
+          data: {
+            posts: {
+              items: [_post],
+            },
+          },
+        } = await api.get(`
+          {
+            posts(limit: 1, skip: ${Math.floor(Math.random() * 5) + 3}) {
+              items {
+                title
+                slug
+              }
+            }
+          }
+        `);
+        setPost(_post);
+      } catch (e) {
+        log.error('useRandomPost:error: 💥 ', e);
+      }
+    }
+    getPosts();
+  }, []);
+  return post;
+}
 
 const Header = () => {
   const router = useRouter();
   const section = useActiveSection();
   const [open, setOpen] = useState(false);
   const [fixed, setFixed] = useState(false);
+  const post = useRandomPost();
   const HeaderComponent =
     router.pathname === '/[slug]' ? S.SlugHeader : S.Header;
   useEffect(() => {
@@ -25,16 +61,17 @@ const Header = () => {
     };
   }, [open]);
   const as = router.pathname === '/' ? { as: 'h1' } : {};
+  const loading = !post;
   return (
     <>
       <S.SubHeader>
         <Container>
-          <S.HeaderContent>
+          <S.HeaderContent as="a" href={post ? `/${post.slug}` : null}>
             <S.VideoIcon>
               <Video width="12" height="12" />
             </S.VideoIcon>
-            <S.SubheaderText>
-              My hero academia temporada 4: Nuevo trailer, nuevo personaje
+            <S.SubheaderText loading={loading}>
+              {!loading && post.title}
             </S.SubheaderText>
             <FastForward width="12" height="12" />
           </S.HeaderContent>
@@ -47,14 +84,12 @@ const Header = () => {
       <HeaderComponent fixed={fixed}>
         <Container>
           <S.HeaderContent justify>
-            <S.TitleContainer>
-              <Film />
-              <S.Title {...as}>
-                <Link href="/">
-                  <a>Cinesilo</a>
-                </Link>
-              </S.Title>
-            </S.TitleContainer>
+            <Link href="/">
+              <S.TitleContainer href="/">
+                <Film />
+                <S.Title {...as}>Cinesilo</S.Title>
+              </S.TitleContainer>
+            </Link>
             <MobileNav open={open} setOpen={setOpen} active={section} />
             <DesktopNav active={section} />
           </S.HeaderContent>

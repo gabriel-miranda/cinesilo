@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  margin-top: 101px;
-  article {
-    margin-bottom: 20px;
-  }
+  position: sticky;
+  top: 60px;
+  margin-top: 100px;
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px 0;
 `;

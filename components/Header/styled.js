@@ -23,13 +23,22 @@ export const VideoIcon = styled.span`
   }
 `;
 
-export const SubheaderText = styled.h2`
+export const SubheaderText = styled.h3`
   line-height: 1;
   font-family: ${({ theme }) => theme.subheader.font.family};
   font-weight: ${({ theme }) => theme.subheader.font.weight};
   font-size: ${({ theme }) => theme.subheader.font.size};
   margin: ${({ theme }) => theme.subheader.font.margin};
   ${({ theme }) => theme.truncate()}
+  ${({ loading }) =>
+    loading &&
+    `
+    background: #fff;
+    border-radius: 3px;
+    width: 150px;
+    height: 1em;
+    opacity: 0.8;
+  `}
 `;
 
 export const Header = styled.header`
@@ -37,7 +46,6 @@ export const Header = styled.header`
   top: ${({ theme }) => theme.header.top};
   height: ${({ theme }) => theme.header.height};
   background: ${({ theme }) => theme.header.background};
-  color: ${({ theme }) => theme.header.font.color};
   z-index: ${({ theme }) => theme.header.zindex + 200};
   ${align}
 `;
@@ -50,25 +58,27 @@ export const SlugHeader = styled(Header)`
   background: transparent;
   transition: background 0.3s ease;
   ${({ fixed }) =>
-    fixed
-      ? `
+    fixed &&
+    `
     position: fixed;
     background: #000;
     top: 0;
-  `
-      : ''}
+  `}
 `;
 
 export const HeaderContent = styled.div`
+  color: ${({ theme }) => theme.header.font.color};
+  text-decoration: none;
   justify-content: ${({ justify }) =>
     justify ? 'space-between' : 'flex-start'};
   ${align}
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.a`
   display: flex;
   align-items: center;
   z-index: ${({ theme }) => theme.header.zindex};
+  text-decoration: none;
 `;
 
 export const Title = styled.span`
@@ -77,9 +87,6 @@ export const Title = styled.span`
   font-family: ${({ theme }) => theme.header.title.font.family};
   font-size: ${({ theme }) => theme.header.title.font.size};
   margin: ${({ theme }) => theme.header.title.margin};
+  color: ${({ theme }) => theme.header.font.color};
   text-transform: lowercase;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
 `;

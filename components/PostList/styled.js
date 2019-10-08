@@ -27,7 +27,7 @@ export const Content = styled.div`
 export const List = styled.ul``;
 
 export const Title = styled.h2`
-  font-size: 21px;
+  font-size: 26px;
   margin-bottom: 0.5em;
   ${({ theme }) => theme.media.mobile`
     font-size: 30px;
@@ -35,12 +35,11 @@ export const Title = styled.h2`
   `}
 `;
 export const Description = styled.p`
-  font-size: 14px;
+  font-size: 15px;
   line-height: 21px;
   color: #666;
   margin-bottom: 2em;
   ${({ theme }) => theme.media.mobile`
-    font-size: 15px;
     letter-spacing: 0.2px;
   `}
 `;

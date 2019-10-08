@@ -50,7 +50,7 @@ Buscar.defaultProps = {
 export default withData(
   ({ page = 1, query }) => `{
     posts(limit: ${PAGE_SIZE}, skip: ${(page - 1) *
-    PAGE_SIZE}, query: "${query}") {
+    PAGE_SIZE}, query: "${query.replace('-', ' ')}") {
       total
       items {
         id

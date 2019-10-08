@@ -48,8 +48,8 @@ export const Image = styled.img`
 `;
 
 export const MarkdownWrapper = styled(Markdown)`
-  padding: 1em 0 4em;
+  padding: 1em 0 0;
   ${({ theme }) => theme.media.tablet`
-    padding: 1em 20px 4em;
+    padding: 1em 20px 0;
   `}
 `;

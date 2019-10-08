@@ -5,7 +5,9 @@ const schema = buildSchema(`
 
   type Query {
     post(slug: String!): Post
-    posts(skip: Int, limit: Int, category: String, query: String): Feed
+    posts(skip: Int, limit: Int, category: String, query: String): FeedPost
+    tag(name: String!): FeedPost
+    tags: FeedTag
   }
 
   type Post {
@@ -35,9 +37,14 @@ const schema = buildSchema(`
     contentType: String!
   }
 
-  type Feed {
+  type FeedPost {
     total: Int!
     items: [Post]
+  }
+
+  type FeedTag {
+    total: Int!
+    items: [String]!
   }
 `);
 

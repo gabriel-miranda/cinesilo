@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  display: flex;
-  padding: 0 70px 20px;
-  a {
-    flex: 1;
-    &:first-child {
-      margin-right: 10px;
-    }
-    &:last-child {
-      margin-left: 10px;
-    }
-  }
+  display: grid;
+  grid-gap: 20px;
+  padding: 0 20px 20px;
+  grid-template-columns: repeat(2, 1fr);
+  ${({ theme }) => theme.media.tablet`
+    padding: 0 90px 20px;
+  `}
 `;

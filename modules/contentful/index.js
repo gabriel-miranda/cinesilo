@@ -25,7 +25,7 @@ class ContentfulWrapper {
       removeUnresolved,
       host: preview ? CDN_PREVIEW : CDN_CONTENTFUL,
     });
-    this.cache = new Store(this.space, cacheMaxAge);
+    this.cache = new Store({ maxAge: cacheMaxAge });
   }
 
   clearCache(keys) {
@@ -38,7 +38,10 @@ class ContentfulWrapper {
 
   async get(query) {
     try {
-      const cachename = ContentfulCache.key(query.content_type, query);
+      const cachename = ContentfulCache.key(
+        query.content_type || 'common',
+        query,
+      );
       const cached = await this.cache.get(cachename);
       if (cached) {
         log.info(`key ${cachename} cached`);

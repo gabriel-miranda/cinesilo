@@ -3,10 +3,11 @@ const GraphQLJSON = require('../graphql/scalars');
 const { ServerError, NotFound } = require('../../modules/error');
 const { CATEGORIES } = require('../../config/server');
 
-const type = 'post';
+const POST_TYPE = 'post';
+const TAG_TYPE = 'tag';
 
 function formatTags(tags) {
-  if (!tags || !tags.fields) {
+  if (!tags) {
     return [];
   }
   return tags.map(tag => tag.fields.name);
@@ -56,7 +57,7 @@ const resolvers = contentful => ({
   JSON: GraphQLJSON,
   post: async ({ slug }) => {
     const q = {
-      content_type: type,
+      content_type: POST_TYPE,
       'fields.slug': slug,
     };
     try {
@@ -81,7 +82,7 @@ const resolvers = contentful => ({
   }) => {
     const _query = query ? { query } : {};
     const q = {
-      content_type: type,
+      content_type: POST_TYPE,
       limit,
       skip,
       order,
@@ -98,6 +99,52 @@ const resolvers = contentful => ({
     } catch (e) {
       log.error(e);
       throw new Error(JSON.stringify(new ServerError()));
+    }
+  },
+  tags: async () => {
+    const q = {
+      content_type: TAG_TYPE,
+    };
+    try {
+      const _tags = await contentful.get(q);
+      const tags = {
+        total: _tags.total,
+        items: _tags.items.map(tag => tag.name),
+      };
+      return tags;
+    } catch (e) {
+      log.error(e);
+      throw new Error(JSON.stringify(new ServerError()));
+    }
+  },
+  tag: async ({ name }) => {
+    const tagQuery = {
+      content_type: TAG_TYPE,
+      'fields.name': name,
+    };
+    try {
+      const {
+        items: [tag],
+      } = await contentful.get(tagQuery);
+      if (!tag) {
+        log.info(`resolvers:tag: tag with name: "${name}" not found`);
+        return {
+          total: 0,
+          items: [],
+        };
+      }
+      const postsQuery = {
+        links_to_entry: tag.id,
+      };
+      const _posts = await contentful.get(postsQuery);
+      const posts = {
+        total: _posts.total,
+        items: _posts.items.map(formatPost),
+      };
+      return posts;
+    } catch (e) {
+      log.error(e);
+      throw new Error(JSON.stringify(e));
     }
   },
 });

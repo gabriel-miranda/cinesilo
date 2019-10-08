@@ -6,7 +6,6 @@ import * as S from './styled';
 
 const ArticleHeader = ({ children, created, description, bg }) => (
   <S.Header>
-    <S.Overlay />
     <S.Background bg={bg} />
     <S.Content>
       <Layout>

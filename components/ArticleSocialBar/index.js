@@ -14,8 +14,8 @@ function ArticleSocialBar() {
   const url = `${BASE_URL.replace(/https?:\/\//, '')}/${router.query.slug}`;
   return (
     <S.Container>
-      <SocialButton type="facebook" size="xs" />
-      <SocialButton type="twitter" size="xs" />
+      <SocialButton type="facebook" size="xs" share />
+      <SocialButton type="twitter" size="xs" share />
       <S.ShareContainer onClick={() => setClipboardText(url)}>
         <S.ShareIcon>
           <Share height={18} width={18} />

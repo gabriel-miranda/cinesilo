@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const StyledContainer = styled.div`
+// eslint-disable-next-line no-unused-vars
+const StyledContainer = styled(({ spacing, ...rest }) => <div {...rest} />)`
   max-width: 100%;
   margin: 0 auto;
   width: ${({ theme }) => theme.container.width};

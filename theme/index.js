@@ -120,7 +120,6 @@ const theme = {
   article: {
     header: {
       background: GLOBALS.COLORS.BLACK_OPACITY,
-      filter: 'blur(10px)',
       zindex: GLOBALS.ZINDEX.ARTICLE.HEADER,
       overlay: {
         zindex: GLOBALS.ZINDEX.ARTICLE.HEADER_OVERLAY,

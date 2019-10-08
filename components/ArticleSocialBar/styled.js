@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  padding: 30px 90px 0;
+  padding: 30px 20px 0;
+  ${({ theme }) => theme.media.tablet`
+    padding: 30px 90px 0;
+  `}
 `;
 
 export const ShareContainer = styled.div`
