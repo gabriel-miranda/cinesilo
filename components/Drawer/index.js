@@ -29,7 +29,7 @@ DrawerItem.propTypes = {
 const Drawer = ({ open, active }) => {
   return (
     <S.Drawer open={open}>
-      <Search />
+      <Search autoFocus />
       <nav>
         <ul>
           {[HOME, ...Object.keys(CATEGORIES)]

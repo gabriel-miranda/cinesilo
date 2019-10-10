@@ -4,7 +4,7 @@ import SearchIcon from 'components/Icons/search.svg';
 import useTranslations from 'modules/translations/hook';
 import * as S from './styled';
 
-const Search = () => {
+const Search = props => {
   const t = useTranslations();
   const router = useRouter();
   const [query, setQuery] = useState('');
@@ -24,7 +24,7 @@ const Search = () => {
         onChange={({ target: { value } }) => setQuery(value)}
         type="search"
         placeholder={t('search')}
-        autoFocus
+        {...props}
       />
       <S.Button show={!query}>
         <SearchIcon height="17" width="17" />

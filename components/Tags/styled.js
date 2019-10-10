@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const List = styled.ul`
   display: flex;
   padding: 30px 20px;
+  flex-wrap: wrap;
   ${({ theme }) => theme.media.tablet`
     padding: 30px 90px;
   `}
 `;
 
 export const Item = styled.li`
-  margin: 0 1em 0 0;
+  margin: 0 1em 1em 0;
   justify-content: center;
   align-items: center;
   display: flex;

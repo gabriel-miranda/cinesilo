@@ -58,8 +58,8 @@ const SocialButton = ({ type, size, share, ...rest }) => {
       size={size}
       type={type}
       href={getURL(type, share, url)}
-      rel="nofollow"
-      target="__blank"
+      rel="noopener nofollow"
+      target="_blank"
     >
       <Icon height="20" />
       {size !== 'xs' && t(`${prefix}_${type}`)}

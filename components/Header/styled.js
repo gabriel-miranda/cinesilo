@@ -1,6 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
+import Container from 'components/Container/styled';
+import LinkSocial from 'components/LinkSocial';
 
 const align = `
+  display: flex;
+  align-items: center;
+`;
+
+export const SubheaderContainer = styled(Container)`
   display: flex;
   align-items: center;
 `;
@@ -23,7 +31,8 @@ export const VideoIcon = styled.span`
   }
 `;
 
-export const SubheaderText = styled.h3`
+// eslint-disable-next-line no-unused-vars
+export const SubheaderText = styled(({ loading, ...rest }) => <h3 {...rest} />)`
   line-height: 1;
   font-family: ${({ theme }) => theme.subheader.font.family};
   font-weight: ${({ theme }) => theme.subheader.font.weight};
@@ -89,4 +98,29 @@ export const Title = styled.span`
   margin: ${({ theme }) => theme.header.title.margin};
   color: ${({ theme }) => theme.header.font.color};
   text-transform: lowercase;
+`;
+
+export const FollowText = styled.span`
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-left: auto;
+  margin: 0 0.25em 0 auto;
+  line-height: 1;
+  display: none;
+  ${({ theme }) => theme.media.mobile`
+    display: initial;
+  `}
+`;
+
+export const LinkList = styled.ul`
+  display: flex;
+  display: none;
+  ${({ theme }) => theme.media.mobile`
+    display: flex;
+  `}
+`;
+
+export const Link = styled(LinkSocial)`
+  display: flex;
+  padding: 0 0.3em;
 `;

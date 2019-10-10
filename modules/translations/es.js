@@ -9,4 +9,5 @@ module.exports = {
   follow_twitter: 'Síguenos en Twitter',
   share_facebook: 'Compartir',
   share_twitter: 'Twittear',
+  follow_us: 'Síguenos',
 };

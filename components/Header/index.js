@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import useActiveSection from 'modules/activesection/hook';
-import Container from 'components/Container';
 import MobileNav from 'components/Nav/mobile';
 import DesktopNav from 'components/Nav/desktop';
+import Container from 'components/Container';
 import Film from 'components/Icons/film.svg';
 import Video from 'components/Icons/video.svg';
 import FastForward from 'components/Icons/fast-forward.svg';
+import Facebook from 'components/Icons/facebook.svg';
+import Twitter from 'components/Icons/twitter.svg';
+import Instagram from 'components/Icons/instagram.svg';
 import { Waypoint } from 'react-waypoint';
 import Client from 'modules/client/main';
 import { log } from 'modules/logger';
+import useTranslations from 'modules/translations/hook';
 import * as S from './styled';
 
 const api = new Client();
@@ -20,15 +24,14 @@ function useRandomPost() {
   useEffect(() => {
     async function getPosts() {
       try {
+        const amount = 5;
         const {
           data: {
-            posts: {
-              items: [_post],
-            },
+            posts: { items },
           },
         } = await api.get(`
           {
-            posts(limit: 1, skip: ${Math.floor(Math.random() * 5) + 3}) {
+            posts(limit: ${amount}, skip: 4) {
               items {
                 title
                 slug
@@ -36,6 +39,7 @@ function useRandomPost() {
             }
           }
         `);
+        const _post = items[Math.floor(Math.random() * amount)];
         setPost(_post);
       } catch (e) {
         log.error('useRandomPost:error: 💥 ', e);
@@ -47,6 +51,7 @@ function useRandomPost() {
 }
 
 const Header = () => {
+  const t = useTranslations();
   const router = useRouter();
   const section = useActiveSection();
   const [open, setOpen] = useState(false);
@@ -65,7 +70,7 @@ const Header = () => {
   return (
     <>
       <S.SubHeader>
-        <Container>
+        <S.SubheaderContainer>
           <S.HeaderContent as="a" href={post ? `/${post.slug}` : null}>
             <S.VideoIcon>
               <Video width="12" height="12" />
@@ -75,7 +80,25 @@ const Header = () => {
             </S.SubheaderText>
             <FastForward width="12" height="12" />
           </S.HeaderContent>
-        </Container>
+          <S.FollowText>{t('follow_us')}</S.FollowText>
+          <S.LinkList>
+            <li>
+              <S.Link to="facebook">
+                <Facebook width="14" height="14" />
+              </S.Link>
+            </li>
+            <li>
+              <S.Link to="twitter">
+                <Twitter width="14" height="14" />
+              </S.Link>
+            </li>
+            <li>
+              <S.Link to="instagram">
+                <Instagram width="14" height="14" />
+              </S.Link>
+            </li>
+          </S.LinkList>
+        </S.SubheaderContainer>
       </S.SubHeader>
       <Waypoint
         onLeave={() => setFixed(true)}

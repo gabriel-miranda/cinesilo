@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Image = styled.img`
@@ -97,7 +98,8 @@ export const Footer = styled.footer`
   color: white;
 `;
 
-export const Title = styled.h2`
+// eslint-disable-next-line no-unused-vars
+export const Title = styled(({ type, ...rest }) => <h2 {...rest} />)`
   font-size: 18px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   ${({ theme }) => theme.media.mobile`

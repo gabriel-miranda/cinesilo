@@ -9,4 +9,5 @@ module.exports = {
   follow_twitter: 'Follow us on Twitter',
   share_facebook: 'Share',
   share_twitter: 'Tweet',
+  follow_us: 'Follow us',
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Calendar from 'components/Icons/calendar.svg';
 import * as S from './styled';
 
+// TODO: Format this in spanish
 const formatDate = date => new Date(date).toDateString().split(' ');
 
 const Time = ({ children, grey }) => {
@@ -10,7 +11,7 @@ const Time = ({ children, grey }) => {
   return (
     <S.TimeContainer grey={grey}>
       <Calendar width="14" height="14" />
-      <S.Time>
+      <S.Time dateTime={children}>
         {month} {day}, {year}
       </S.Time>
     </S.TimeContainer>

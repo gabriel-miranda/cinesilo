@@ -12,7 +12,6 @@ const preparePost = post => {
 
 const HomeCarousel = ({ posts }) => (
   <S.ContainerWindow>
-    <S.Title>Artículos populares</S.Title>
     <S.Container>{posts.map(preparePost).map(Thumbnail)}</S.Container>
   </S.ContainerWindow>
 );

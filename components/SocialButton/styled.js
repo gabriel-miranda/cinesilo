@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 function shadow(r, g, b) {
@@ -24,7 +25,8 @@ const BACKGROUNDS = {
   `,
 };
 
-export const Button = styled.a`
+// eslint-disable-next-line no-unused-vars
+export const Button = styled(({ type, ...rest }) => <a {...rest} />)`
   display: flex;
   align-items: center;
   justify-content: space-between;
