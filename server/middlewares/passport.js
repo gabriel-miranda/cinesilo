@@ -1,6 +1,6 @@
 const passport = require('passport');
 const { Strategy } = require('passport-http-bearer');
-const { API_KEY_CACHE } = require('../../config');
+const { API_KEY_CACHE } = require('../../config/server');
 const { log } = require('../../modules/logger');
 
 function passportSetup() {
