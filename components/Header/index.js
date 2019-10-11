@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import useActiveSection from 'modules/activesection/hook';
@@ -12,51 +13,15 @@ import Facebook from 'components/Icons/facebook.svg';
 import Twitter from 'components/Icons/twitter.svg';
 import Instagram from 'components/Icons/instagram.svg';
 import { Waypoint } from 'react-waypoint';
-import Client from 'modules/client/main';
-import { log } from 'modules/logger';
 import useTranslations from 'modules/translations/hook';
 import * as S from './styled';
 
-const api = new Client();
-
-function useRandomPost() {
-  const [post, setPost] = useState(null);
-  useEffect(() => {
-    async function getPosts() {
-      try {
-        const amount = 5;
-        const {
-          data: {
-            posts: { items },
-          },
-        } = await api.get(`
-          {
-            posts(limit: ${amount}, skip: 4) {
-              items {
-                title
-                slug
-              }
-            }
-          }
-        `);
-        const _post = items[Math.floor(Math.random() * amount)];
-        setPost(_post);
-      } catch (e) {
-        log.error('useRandomPost:error: 💥 ', e);
-      }
-    }
-    getPosts();
-  }, []);
-  return post;
-}
-
-const Header = () => {
+const Header = ({ post }) => {
   const t = useTranslations();
   const router = useRouter();
   const section = useActiveSection();
   const [open, setOpen] = useState(false);
   const [fixed, setFixed] = useState(false);
-  const post = useRandomPost();
   const HeaderComponent =
     router.pathname === '/[slug]' ? S.SlugHeader : S.Header;
   useEffect(() => {
@@ -66,34 +31,33 @@ const Header = () => {
     };
   }, [open]);
   const as = router.pathname === '/' ? { as: 'h1' } : {};
-  const loading = !post;
   return (
     <>
       <S.SubHeader>
         <S.SubheaderContainer>
-          <S.HeaderContent as="a" href={post ? `/${post.slug}` : null}>
-            <S.VideoIcon>
-              <Video width="12" height="12" />
-            </S.VideoIcon>
-            <S.SubheaderText loading={loading}>
-              {!loading && post.title}
-            </S.SubheaderText>
-            <FastForward width="12" height="12" />
-          </S.HeaderContent>
+          <Link href="/[slug]" as={`/${post.slug}`}>
+            <S.HeaderContent as="a" href={`/${post.slug}`}>
+              <S.VideoIcon>
+                <Video width="12" height="12" />
+              </S.VideoIcon>
+              <S.SubheaderText>{post.title}</S.SubheaderText>
+              <FastForward width="12" height="12" />
+            </S.HeaderContent>
+          </Link>
           <S.FollowText>{t('follow_us')}</S.FollowText>
           <S.LinkList>
             <li>
-              <S.Link to="facebook">
+              <S.Link to="facebook" aria-label="Link a Cinesilo Facebook">
                 <Facebook width="14" height="14" />
               </S.Link>
             </li>
             <li>
-              <S.Link to="twitter">
+              <S.Link to="twitter" aria-label="Link a Cinesilo Twitter">
                 <Twitter width="14" height="14" />
               </S.Link>
             </li>
             <li>
-              <S.Link to="instagram">
+              <S.Link to="instagram" aria-label="Link a Cinesilo Instagram">
                 <Instagram width="14" height="14" />
               </S.Link>
             </li>
@@ -120,6 +84,13 @@ const Header = () => {
       </HeaderComponent>
     </>
   );
+};
+
+Header.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Header;

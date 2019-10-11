@@ -49,7 +49,7 @@ export const Figure = styled.figure`
   margin: 0;
 `;
 
-export const Content = styled.div`
+export const Content = styled.a`
   position: relative;
   z-index: 300;
   padding: 30px;
@@ -62,6 +62,7 @@ export const Content = styled.div`
   height: 100%;
   justify-content: space-between;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const Icon = styled.span`

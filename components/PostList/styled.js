@@ -4,7 +4,7 @@ export const Item = styled.li`
   display: flex;
   flex-direction: column;
   margin: 0 0 40px;
-  div:first-child figure + div {
+  div:first-child figure + a {
     min-height: 250px;
   }
   ${({ theme }) => theme.media.mobile`

@@ -18,15 +18,16 @@ const Search = props => {
     );
   };
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit} role="search">
       <S.Input
         value={query}
         onChange={({ target: { value } }) => setQuery(value)}
-        type="search"
         placeholder={t('search')}
+        type="search"
+        role="searchbox"
         {...props}
       />
-      <S.Button show={!query}>
+      <S.Button show={!query} type="submit" aria-label={t('search')}>
         <SearchIcon height="17" width="17" />
       </S.Button>
     </S.Form>

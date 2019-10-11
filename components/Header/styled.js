@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Container from 'components/Container/styled';
 import LinkSocial from 'components/LinkSocial';
@@ -32,22 +31,13 @@ export const VideoIcon = styled.span`
 `;
 
 // eslint-disable-next-line no-unused-vars
-export const SubheaderText = styled(({ loading, ...rest }) => <h3 {...rest} />)`
+export const SubheaderText = styled.h3`
   line-height: 1;
   font-family: ${({ theme }) => theme.subheader.font.family};
   font-weight: ${({ theme }) => theme.subheader.font.weight};
   font-size: ${({ theme }) => theme.subheader.font.size};
   margin: ${({ theme }) => theme.subheader.font.margin};
   ${({ theme }) => theme.truncate()}
-  ${({ loading }) =>
-    loading &&
-    `
-    background: #fff;
-    border-radius: 3px;
-    width: 150px;
-    height: 1em;
-    opacity: 0.8;
-  `}
 `;
 
 export const Header = styled.header`

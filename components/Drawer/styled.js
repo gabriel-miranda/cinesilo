@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Drawer = styled.section`
+export const Drawer = styled.div`
   flex-direction: column;
   left: 0;
   display: ${({ open }) => (open ? 'flex' : 'none')};
