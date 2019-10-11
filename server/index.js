@@ -5,6 +5,7 @@ const cors = require('cors');
 const express = require('express');
 const compression = require('compression');
 const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
 const { api } = require('./api');
 const { log } = require('../modules/logger');
 const { initInvalidatorSocket } = require('../modules/cache/invalidator');
@@ -66,6 +67,11 @@ const contentful = new ContentfulWrapper({
         }
       },
     );
+  });
+
+  server.post('/_/log', bodyParser.json(), req => {
+    const { type, data } = req.body;
+    log[type](`client:${type}`, ...data);
   });
 
   server.get('/_next/*', (req, res) => handle(req, res));

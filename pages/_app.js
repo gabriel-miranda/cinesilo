@@ -3,6 +3,7 @@ import App from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme';
 import { APP_NAME } from 'config';
+import { log } from 'modules/logger';
 import Client from 'modules/client/main';
 import TranslationsContext from 'modules/translations/context';
 import ActiveSectionContext from 'modules/activesection/context';
@@ -81,6 +82,7 @@ class MyApp extends App {
   }
 
   componentDidCatch(error, errorInfo) {
+    log.error(`_app.js:error 💥 ${error}`, errorInfo);
     super.componentDidCatch(error, errorInfo);
   }
 
