@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const next = require('next');
 const cors = require('cors');
+const { parse } = require('url');
 const express = require('express');
 const compression = require('compression');
 const favicon = require('serve-favicon');
@@ -52,6 +53,13 @@ const contentful = new ContentfulWrapper({
   server.use(compression());
 
   server.use(favicon(path.join(__dirname, '../static', 'favicon.ico')));
+
+  server.get('/service-worker.js', (req, res) => {
+    const parsedUrl = parse(req.url, true);
+    const { pathname } = parsedUrl;
+    const filePath = path.join(__dirname, '../.next', pathname);
+    app.serveStatic(req, res, filePath);
+  });
 
   server.get('/manifest.json', (req, res, n) => {
     res.sendFile(
