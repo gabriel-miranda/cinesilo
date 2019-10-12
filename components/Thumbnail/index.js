@@ -72,7 +72,7 @@ function getImageSize(size) {
   }
 }
 
-function getImage({ url, format = 'jpg', width, height, fit = 'thumb' }) {
+function getImage({ url, format = 'webp', width, height, fit = 'thumb' }) {
   const query = { fm: format, w: width, h: height, fit };
   return `${url}?${querystring.stringify(query)}`;
 }
