@@ -1,9 +1,10 @@
 require('dotenv').config();
+const withOffline = require('next-offline');
 
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
-module.exports = {
+const nextConfig = {
   webpack: config => {
     config.plugins = config.plugins || [];
 
@@ -20,3 +21,5 @@ module.exports = {
     return config;
   },
 };
+
+module.exports = withOffline(nextConfig);

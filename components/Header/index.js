@@ -16,6 +16,12 @@ import { Waypoint } from 'react-waypoint';
 import useTranslations from 'modules/translations/hook';
 import * as S from './styled';
 
+function useScrollLock(lock) {
+  useEffect(() => {
+    document.body.style.overflow = lock ? 'hidden' : null;
+  }, [lock]);
+}
+
 const Header = ({ post }) => {
   const t = useTranslations();
   const router = useRouter();
@@ -24,6 +30,7 @@ const Header = ({ post }) => {
   const [fixed, setFixed] = useState(false);
   const HeaderComponent =
     router.pathname === '/[slug]' ? S.SlugHeader : S.Header;
+  useScrollLock(open);
   useEffect(() => {
     Router.events.on('routeChangeComplete', () => setOpen(false));
     return function cleanup() {

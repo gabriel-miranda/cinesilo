@@ -69,9 +69,15 @@ const contentful = new ContentfulWrapper({
     );
   });
 
-  server.post('/_/log', bodyParser.json(), req => {
-    const { type, data } = req.body;
-    log[type](`client:${type}`, ...data);
+  server.post('/_/log', bodyParser.json(), (req, res) => {
+    try {
+      const { type, data } = req.body;
+      log[type](`client:${type}`, ...data);
+      res.sendStatus(200);
+    } catch (e) {
+      log.error('/_/log:error 💥 ', e);
+      res.sendStatus(400);
+    }
   });
 
   server.get('/_next/*', (req, res) => handle(req, res));
