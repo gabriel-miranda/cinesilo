@@ -1,5 +1,7 @@
 {
   "name": "cinesilo",
+  "shortname": "Cine, series y entretenimiento",
+  "description": "",
   "icons": [
     {
       "src": "/android-icon-192x192.png",
@@ -7,5 +9,9 @@
       "type": "image/png",
       "density": "4.0"
     }
-  ]
+  ],
+  "theme_color": "#6839b7",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "standalone"
 }
