@@ -52,7 +52,7 @@ const contentful = new ContentfulWrapper({
 
   server.use(compression());
 
-  server.use(favicon(path.join(__dirname, '../static', 'favicon.ico')));
+  server.use(favicon(path.join(__dirname, '../public/static', 'favicon.ico')));
 
   server.get('/service-worker.js', (req, res) => {
     const parsedUrl = parse(req.url, true);
@@ -64,7 +64,7 @@ const contentful = new ContentfulWrapper({
   server.get('/manifest.json', (req, res, n) => {
     res.sendFile(
       'manifest.json',
-      { root: path.join(__dirname, '../static') },
+      { root: path.join(__dirname, '../public/static') },
       err => {
         if (err) {
           log.error(
