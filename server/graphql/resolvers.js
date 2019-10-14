@@ -69,7 +69,7 @@ const resolvers = contentful => ({
       }
       return formatPost(post);
     } catch (e) {
-      log.error(e);
+      log.error(`resolvers:post: "${slug}" 💥 `, e);
       throw new Error(JSON.stringify(e));
     }
   },
@@ -97,7 +97,7 @@ const resolvers = contentful => ({
       };
       return posts;
     } catch (e) {
-      log.error(e);
+      log.error(`resolvers:posts: error 💥 `, e);
       throw new Error(JSON.stringify(new ServerError()));
     }
   },
@@ -113,7 +113,7 @@ const resolvers = contentful => ({
       };
       return tags;
     } catch (e) {
-      log.error(e);
+      log.error(`resolvers:tags: error 💥 `, e);
       throw new Error(JSON.stringify(new ServerError()));
     }
   },
@@ -143,7 +143,7 @@ const resolvers = contentful => ({
       };
       return posts;
     } catch (e) {
-      log.error(e);
+      log.error(`resolvers:tag: "${name}" error 💥 `, e);
       throw new Error(JSON.stringify(e));
     }
   },

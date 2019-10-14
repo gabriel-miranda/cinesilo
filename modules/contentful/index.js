@@ -44,7 +44,7 @@ class ContentfulWrapper {
       );
       const cached = await this.cache.get(cachename);
       if (cached) {
-        log.info(`key ${cachename} cached`);
+        log.info(`contentful-wrapper:cache: key ${cachename} cached`);
         return cached;
       }
       log.info(`key ${cachename} not cached`);

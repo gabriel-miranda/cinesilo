@@ -5,7 +5,7 @@ module.exports = {
   PORT,
   BASE_URL: process.env.BASE_URL || `http://localhost:${PORT}`,
   DEV: Boolean(process.env.DEV) || process.env.NODE_ENV !== 'production',
-  PAGE_SIZE: parseInt(process.env.PAGE_SIZE, 10) || 10,
+  PAGE_SIZE: parseInt(process.env.PAGE_SIZE, 10) || 14,
   CATEGORIES: { movies: 'movies', series: 'series', anime: 'anime' },
   FACEBOOK_URL: 'https://www.facebook.com/cinesilo/',
   FACEBOOK_SHARE: 'https://www.facebook.com/sharer/sharer.php?u=',

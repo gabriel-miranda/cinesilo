@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const { api } = require('./api');
 const { log } = require('../modules/logger');
 const { initInvalidatorSocket } = require('../modules/cache/invalidator');
+const { renderAndCache } = require('../modules/cache/server');
 const { contentfulMiddleware } = require('./middlewares/contentful');
 const { languageMiddleware } = require('./middlewares/language');
 const { translationsMiddleware } = require('./middlewares/translations');
@@ -104,8 +105,34 @@ const contentful = new ContentfulWrapper({
     // This routes apply only to spanish because at this moment is the only
     // language we support, do a forEach with more languages to make it work
     const current = `/${translations.es[category].toLowerCase()}`;
-    server.get(current, (req, res) => app.render(req, res, current));
+    server.get(current, (req, res) =>
+      renderAndCache({
+        app,
+        req,
+        res,
+        pagePath: current,
+      }),
+    );
   });
+
+  server.get('/', (req, res) =>
+    renderAndCache({
+      app,
+      req,
+      res,
+      pagePath: '/index',
+    }),
+  );
+
+  server.get('/:slug', (req, res) =>
+    renderAndCache({
+      app,
+      req,
+      res,
+      pagePath: '/[slug]',
+      query: { slug: req.params.slug },
+    }),
+  );
 
   server.get('*', (req, res) => handle(req, res));
 

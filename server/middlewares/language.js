@@ -1,5 +1,3 @@
-const { log } = require('../../modules/logger');
-
 const LANGUAGES = {
   es: 'es',
 };
@@ -16,7 +14,11 @@ const getLanguage = req => {
 const languageMiddleware = (req, res, next) => {
   const lang = getLanguage(req);
   res.locals.language = lang;
+  /*
+   * TODO: Uncomment this when we have multiple languages available
+
   log.info(`middleware:language language set: ${lang}`);
+  */
   next();
 };
 
