@@ -10,7 +10,7 @@ import ArticleSocialBar from 'components/ArticleSocialBar';
 import ArticleShareBar from 'components/ArticleShareBar';
 import ArticleSidebar from 'components/ArticleSidebar';
 import Markdown from 'components/Markdown';
-import Tags from 'components/Tags';
+import TagList from 'components/TagList';
 import Disqus from 'components/Disqus';
 import { BASE_URL } from 'config';
 
@@ -39,7 +39,7 @@ const Post = ({ data: { post, posts }, errors }) => {
         <LeftContent>
           <ArticleSocialBar />
           <Markdown>{post.body}</Markdown>
-          <Tags tags={post.tags} />
+          <TagList tags={post.tags} />
           <ArticleShareBar />
           <Disqus
             identifier={router.query.slug}

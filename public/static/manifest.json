@@ -1,7 +1,7 @@
 {
   "name": "cinesilo",
-  "shortname": "Cine, series y entretenimiento",
-  "description": "",
+  "short_name": "cinesilo",
+  "description": "Cine, series y entretenimiento",
   "icons": [
     {
       "src": "/static/android-icon-192x192.png",

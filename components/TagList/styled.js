@@ -2,11 +2,20 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
-  padding: 30px 20px;
   flex-wrap: wrap;
+  margin-bottom: 30vh;
+`;
+
+export const ListPost = styled(List)`
+  margin-bottom: 0;
+  padding: 30px 20px;
   ${({ theme }) => theme.media.tablet`
     padding: 30px 90px;
   `}
+`;
+
+export const Link = styled.a`
+  text-decoration: none;
 `;
 
 export const Item = styled.li`

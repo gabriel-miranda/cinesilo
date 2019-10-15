@@ -101,10 +101,21 @@ const contentful = new ContentfulWrapper({
 
   server.use(slashesMiddleware());
 
-  ['search', ...Object.keys(CATEGORIES)].forEach(category => {
+  server.get('/', (req, res) =>
+    renderAndCache({
+      app,
+      req,
+      res,
+      pagePath: '/index',
+    }),
+  );
+
+  ['search', 'tags', ...Object.keys(CATEGORIES)].forEach(category => {
     // This routes apply only to spanish because at this moment is the only
     // language we support, do a forEach with more languages to make it work
-    const current = `/${translations.es[category].toLowerCase()}`;
+    const current = translations.es[category]
+      ? `/${translations.es[category].toLowerCase()}`
+      : `/${category}`;
     server.get(current, (req, res) =>
       renderAndCache({
         app,
@@ -115,12 +126,13 @@ const contentful = new ContentfulWrapper({
     );
   });
 
-  server.get('/', (req, res) =>
+  server.get('/tags/:tag', (req, res) =>
     renderAndCache({
       app,
       req,
       res,
-      pagePath: '/index',
+      pagePath: '/tags/[tag]',
+      query: { tag: req.params.tag },
     }),
   );
 

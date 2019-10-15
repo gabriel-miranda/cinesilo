@@ -117,10 +117,10 @@ const resolvers = contentful => ({
       throw new Error(JSON.stringify(new ServerError()));
     }
   },
-  tag: async ({ name }) => {
+  tag: async ({ name, limit = 10, skip = 0, order = '-sys.createdAt' }) => {
     const tagQuery = {
       content_type: TAG_TYPE,
-      'fields.name': name,
+      'fields.name': name.replace('-', ' '),
     };
     try {
       const {
@@ -135,6 +135,9 @@ const resolvers = contentful => ({
       }
       const postsQuery = {
         links_to_entry: tag.id,
+        limit,
+        skip,
+        order,
       };
       const _posts = await contentful.get(postsQuery);
       const posts = {

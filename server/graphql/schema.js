@@ -6,7 +6,7 @@ const schema = buildSchema(`
   type Query {
     post(slug: String!): Post
     posts(skip: Int, limit: Int, category: String, query: String): FeedPost
-    tag(name: String!): FeedPost
+    tag(skip: Int, limit: Int, name: String!): FeedPost
     tags: FeedTag
   }
 

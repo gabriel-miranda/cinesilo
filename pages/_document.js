@@ -72,6 +72,7 @@ export default class MyDocument extends Document {
             href="/static/visby.woff2"
           />
           <link rel="stylesheet" href="/static/font.css" type="text/css" />
+          <meta name="theme-color" content="#673AB7" />
         </Head>
         <body>
           <Main />
