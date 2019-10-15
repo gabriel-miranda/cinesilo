@@ -62,6 +62,22 @@ const contentful = new ContentfulWrapper({
     app.serveStatic(req, res, filePath);
   });
 
+  server.get('/robots.txt', (req, res, n) => {
+    res.sendFile(
+      'robots.txt',
+      { root: path.join(__dirname, '../public') },
+      err => {
+        if (err) {
+          log.error(
+            '💥 An error ocurred when trying to retrieve the robots.txt',
+            err,
+          );
+          n(err);
+        }
+      },
+    );
+  });
+
   server.get('/manifest.json', (req, res, n) => {
     res.sendFile(
       'manifest.json',
