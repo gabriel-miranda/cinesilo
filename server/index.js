@@ -8,6 +8,7 @@ const compression = require('compression');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const { api } = require('./api');
+const { sitemap } = require('./sitemap');
 const { log } = require('../modules/logger');
 const { initInvalidatorSocket } = require('../modules/cache/invalidator');
 const { renderAndCache } = require('../modules/cache/server');
@@ -108,6 +109,8 @@ const contentful = new ContentfulWrapper({
   server.get('/_next/*', (req, res) => handle(req, res));
 
   server.use(contentfulMiddleware({ contentful }));
+
+  server.use(sitemap);
 
   server.use('/api', api);
 

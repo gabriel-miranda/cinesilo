@@ -36,7 +36,12 @@ class ContentfulWrapper {
     this.cache.createNewInstance();
   }
 
-  async get(query) {
+  async getNoCache(query) {
+    const response = await this.get(query, true);
+    return response;
+  }
+
+  async get(query, noCache) {
     try {
       const cachename = ContentfulCache.key(
         query.content_type || 'common',
@@ -58,7 +63,9 @@ class ContentfulWrapper {
         total,
         items: results,
       };
-      this.cache.set(cachename, response);
+      if (!noCache) {
+        this.cache.set(cachename, response);
+      }
       return response;
     } catch (e) {
       log.error(`contentful:wrapper: 💥 an error ocurred ${e}`);
