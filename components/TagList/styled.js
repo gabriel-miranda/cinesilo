@@ -39,5 +39,6 @@ export const Item = styled.li`
     background: #673ab7;
     width: 30px;
     height: 30px;
+    border-color: #673ab7;
   `}
 `;

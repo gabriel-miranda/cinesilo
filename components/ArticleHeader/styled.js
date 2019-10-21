@@ -49,7 +49,7 @@ export const Title = styled.h1`
 `;
 
 export const Description = styled.p`
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6em;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;

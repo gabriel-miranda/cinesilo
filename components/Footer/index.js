@@ -11,7 +11,15 @@ import * as S from './styled';
 
 const Category = item => {
   const t = useTranslations();
-  return <S.Category key={item}>{t(item)}</S.Category>;
+  const label = t(item);
+  const href = `/${label.toLowerCase()}`;
+  return (
+    <S.Category key={label}>
+      <Link href={href}>
+        <a href={href}>{label}</a>
+      </Link>
+    </S.Category>
+  );
 };
 
 const Footer = () => (
@@ -23,7 +31,7 @@ const Footer = () => (
             <Film height="20" />
             <S.Title>
               <Link href="/">
-                <a>Cinesilo</a>
+                <a href="/">Cinesilo</a>
               </Link>
             </S.Title>
           </S.TitleContainer>
@@ -37,16 +45,21 @@ const Footer = () => (
         <S.Column>
           <S.SubTitle>Categorías</S.SubTitle>
           <>{Object.keys(CATEGORIES).map(Category)}</>
+          <S.Category>
+            <Link href="/tags/index" as="/tags">
+              <a href="/tags">Tags</a>
+            </Link>
+          </S.Category>
         </S.Column>
         <S.Column>
           <S.SubTitle>Síguenos en nuestras redes</S.SubTitle>
-          <S.Icon>
+          <S.Icon to="facebook">
             <Facebook height="15" />
           </S.Icon>
-          <S.Icon>
+          <S.Icon to="twitter">
             <Twitter height="15" />
           </S.Icon>
-          <S.Icon>
+          <S.Icon to="instagram">
             <Instagram height="15" />
           </S.Icon>
         </S.Column>

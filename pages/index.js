@@ -7,6 +7,7 @@ import HomeCarousel from 'components/HomeCarousel';
 import PostList from 'components/PostList';
 import Paginator from 'components/Paginator';
 import SocialButton from 'components/SocialButton';
+import StickyContainer from 'components/StickyContainer';
 import { Layout, LeftContent, Aside } from 'components/Layout';
 import withData from 'modules/withData';
 import { PAGE_SIZE } from 'config';
@@ -23,16 +24,20 @@ const Home = ({ data: { posts }, page }) => {
       </Head>
       <>
         <HomeGrid posts={posts.items.slice(0, 4)} />
+        <Layout />
         <HomeCarousel posts={posts.items.slice(4, 7)} />
+        <Layout />
         <Layout>
           <LeftContent>
             <PostList posts={posts.items.slice(7, posts.items.length)} />
             <Paginator items={posts.total} currentPage={parseInt(page, 10)} />
           </LeftContent>
           <Aside>
-            <SocialButton type="facebook" />
-            <SocialButton type="twitter" />
-            <SocialButton type="instagram" />
+            <StickyContainer sticky={80}>
+              <SocialButton type="facebook" />
+              <SocialButton type="twitter" />
+              <SocialButton type="instagram" />
+            </StickyContainer>
           </Aside>
         </Layout>
       </>

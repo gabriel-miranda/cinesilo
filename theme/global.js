@@ -6,11 +6,11 @@ const COLORS = {
   WHITE: '#fff',
   WHITE_OPACITY: 'rgba(255, 255, 255, 0.4)',
   PURPLE_MOVIE: '#673AB7',
-  PURPLE_MOVIE_OPACITY: 'rgba(103, 58, 183, 0.7)',
+  PURPLE_MOVIE_OPACITY: 'rgba(103, 58, 183, 0.9)',
   BLUE_SERIES: '#0063DA',
-  BLUE_SERIES_OPACITY: 'rgba(0, 99, 218, 0.7)',
+  BLUE_SERIES_OPACITY: 'rgba(0, 99, 218, 0.9)',
   GREEN_ANIME: '#00B397',
-  GREEN_ANIME_OPACITY: 'rgba(0, 179, 151, 0.7)',
+  GREEN_ANIME_OPACITY: 'rgba(0, 179, 151, 0.9)',
 };
 
 const SIZES = {
@@ -31,8 +31,9 @@ const SIZES = {
 };
 
 const FONTS = {
-  CINESILO: 'cinesilo',
-  COMMON: 'Helvetica, Arial, sans-serif',
+  CINESILO: "'cinesilo', Arial, Helvetica, sans-serif",
+  COMMON:
+    '-apple-system,  BlinkMacSystemFont, sans-serif, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
 };
 
 const RADIUS = {
@@ -74,6 +75,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   ::placeholder {
     opacity: 0.5;
+  }
+  ::selection {
+    background: ${COLORS.PURPLE_MOVIE_OPACITY.replace('0.9', '0.5')};
+    color: #fff;
   }
 `;
 

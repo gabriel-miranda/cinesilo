@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import StyledContainer from 'components/Container/styled';
 
 const BOX_AMOUNT = 3;
-const BOX_GAP = 40;
+const BOX_GAP = 20;
 
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: ${BOX_GAP / 2}px;
+  grid-gap: ${BOX_GAP}px;
   width: calc(80vw * ${BOX_AMOUNT});
-  padding: 50px 20px 50px 0;
+  padding: 30px 20px 30px 0;
   ${({ theme }) => theme.media.mobile`
     width: calc(40vw * ${BOX_AMOUNT});
   `}
@@ -17,7 +17,7 @@ export const Container = styled.div`
   ${({ theme }) => theme.media.tablet`
     width: 100%;
     grid-gap: ${BOX_GAP}px;
-    padding: 50px 0;
+    padding: 30px 0 30px;
   `}
 `;
 

@@ -33,7 +33,9 @@ export const P = styled.p`
 export const Heading2 = styled.h2`
   font-size: 32px;
   padding: 0 20px;
-  margin: 1.25em 0 0.5em;
+  margin: 0.75em 0 0.5em;
+  font-weight: 800;
+  color: #252525;
   ${({ theme }) => theme.media.tablet`
     font-size: 36px;
     padding: 0 70px;
@@ -43,7 +45,7 @@ export const Heading2 = styled.h2`
 export const Image = styled.img`
   margin: 1em 0;
   ${({ theme }) => theme.media.tablet`
-    border-radius: 5px;
+    border-radius: 10px;
   `}
 `;
 

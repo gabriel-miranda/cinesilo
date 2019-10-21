@@ -9,10 +9,13 @@ import * as S from './styled';
 const NavItem = ({ item, active }) => {
   const t = useTranslations();
   const label = t(item);
+  const href = `/${label.toLowerCase()}`;
   return (
     <li key={item}>
-      <Link href={`/${label.toLowerCase()}`}>
-        <S.LinkItem active={item === active}>{label}</S.LinkItem>
+      <Link href={href}>
+        <S.LinkItem href={href} active={item === active}>
+          {label}
+        </S.LinkItem>
       </Link>
     </li>
   );

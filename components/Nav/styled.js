@@ -29,7 +29,9 @@ export const List = styled.ul`
 `;
 
 export const LinkItem = styled.a`
-  font-family: 'cinesilo';
+  font-family: 'cinesilo', Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-decoration: none;
   text-transform: uppercase;
   padding: 8px 12px;
   font-size: 13px;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Time = styled.time`
   font-size: 13px;
-  margin: 2px 0 0 10px;
+  margin: 0 0 0 10px;
 `;
 
 export const TimeContainer = styled.span`

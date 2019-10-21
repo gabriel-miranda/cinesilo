@@ -14,8 +14,8 @@ export const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
   &:hover ${Image} {
@@ -54,9 +54,9 @@ export const Content = styled.a`
   z-index: 300;
   padding: 30px;
   background: ${({ theme, category }) =>
-    `linear-gradient(to top, ${
+    `linear-gradient(to top, ${theme.thumbnail.icon[category]} 0%, ${
       theme.thumbnail.icon[category]
-    }, rgba(0,0,0,0.3))`};
+    } 20%, transparent 90%)`};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -90,7 +90,7 @@ export const GridIcon = styled(Icon)`
 export const PlainIcon = styled(Icon)`
   background: none;
   box-shadow: none;
-  margin: 30px 0 0;
+  margin: 20px 0 10px;
   align-items: flex-end;
   justify-content: flex-start;
 `;
@@ -102,7 +102,9 @@ export const Footer = styled.footer`
 // eslint-disable-next-line no-unused-vars
 export const Title = styled(({ type, ...rest }) => <h2 {...rest} />)`
   font-size: 18px;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin: 0 0 10px;
+  line-height: 1.3em;
   ${({ theme }) => theme.media.mobile`
     ${theme.truncate(2)}
   `}
@@ -113,7 +115,7 @@ export const Title = styled(({ type, ...rest }) => <h2 {...rest} />)`
 
 export const TitleLarge = styled(Title)`
   ${({ theme }) => theme.media.mobile`
-    font-size: 30px;
+    font-size: 32px;
   `}
 `;
 

@@ -20,9 +20,13 @@ function TagList({ tags, showIcon }) {
   return (
     <ListComponent>
       {showIcon && (
-        <S.Item icon>
-          <Tag height={15} width={15} />
-        </S.Item>
+        <Link href="/tags/index" as="/tags">
+          <S.Link href="/tags">
+            <S.Item icon>
+              <Tag height={15} width={15} />
+            </S.Item>
+          </S.Link>
+        </Link>
       )}
       {tags && tags.map(TagItem)}
     </ListComponent>

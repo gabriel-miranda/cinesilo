@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Container from 'components/Container/styled';
+import LinkSocial from 'components/LinkSocial';
 
 export const Column = styled.div`
   width: 100%;
@@ -58,7 +59,7 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h3`
   font-size: 30px;
-  font-family: 'cinesilo';
+  font-family: 'cinesilo', Arial, Helvetica, sans-serif;
   color: #fff;
   text-transform: lowercase;
   margin: 0 0 7px 20px;
@@ -77,7 +78,7 @@ export const Description = styled.p`
 
 export const SubTitle = styled.h4`
   text-transform: uppercase;
-  font-family: 'cinesilo';
+  font-family: 'cinesilo', Arial, Helvetica, sans-serif;
   font-size: 15px;
   padding: 0 30px 10px 0;
   color: rgba(255, 255, 255, 0.7);
@@ -91,9 +92,13 @@ export const Category = styled.h5`
   font-family: Helvetica;
   font-weight: 300;
   font-size: 12px;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
-export const Icon = styled.a`
+export const Icon = styled(LinkSocial)`
   text-decoration: none;
   background: #673ab7;
   width: 40px;
